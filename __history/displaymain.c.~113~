@@ -31,13 +31,9 @@ int y_pos_2 = 32;
 float dx_2 = 0;
 float dy_2 = 0;
 
-int1 shoot_1 = 1;
-int cooldown_1 = 20;
-int aiming_1 = 0;
-
-int1 shoot_2 = 1;
-int cooldown_2 = 20;
-int aiming_2 = 0;
+int1 shoot = 1;
+int cooldown = 20;
+int aiming = 0;
 
 float last_ship_angle = 0;
 float ship_angle = 0;
@@ -107,7 +103,7 @@ void glcd_text57(int x, int y, char *textptr, int size, int1 color);
 void inicio(int sec);
 void scores(unsigned int16 scr, unsigned int lvl, int1 color);
 void single_menu(int1 play);
-int laser_waza(int x, int y);
+void laser_waza(int x, int y);
 
 float get_ship_angle();
 float get_x_vel();
@@ -191,21 +187,6 @@ void rcv_data()
 }
 
 void draw_cuadrito(int x, int y, int1 col);
-
-void draw_win(int1 w){
-   if(w){
-      glcd_fillScreen(1);
-      char text_asteroids[] = "PLAYER 1 WINS!";
-      glcd_text57(29, 22, text_asteroids, 1, 0);
-      delay_ms(500);
-   }
-   else{
-      glcd_fillScreen(1);
-      char text_asteroids[] = "PLAYER 2 WINS!";
-      glcd_text57(29, 22, text_asteroids, 1, 0);
-      delay_ms(500);
-   }
-}
 
 void restart_screen()
 {
@@ -606,178 +587,41 @@ void main()
          else
             y_pos_2 = (y_pos_2 - (int)dy_2) % 63;
 
-         if(shoot_1){
-            cooldown_1 = 0;
+         if(shoot){
+            cooldown = 0;
          }
          else{
-            cooldown_1--;
-            if(cooldown_1 == 0){
-               shoot_1 = 1;
-            }
-            if(cooldown_1 == 10){
-               switch(aiming_1){
-                  case 0: 
-                  case 1:{
-                     glcd_line(last_bullet_x_pos_1, last_bullet_y_pos_1, 128, last_bullet_y_pos_1, 0);
-                     break;
-                  }
-                  case 2:{
-                     glcd_line(last_bullet_x_pos_1, last_bullet_y_pos_1, last_bullet_x_pos_1, 0, 0);
-                     break;
-                  }
-                  case 3:{
-                     glcd_line(0, last_bullet_y_pos_1, last_bullet_x_pos_1, last_bullet_y_pos_1, 0);
-                     break;
-                  }
-                  case 4:{
-                     glcd_line(last_bullet_x_pos_1, last_bullet_y_pos_1, last_bullet_x_pos_1, 63, 0);
-                     break;
-                  }
-               }
+            cooldown--;
+            if(cooldown == 0){
+               shoot = 1;
             }
          }
 
-         if(p1_L && shoot_1){
-            aiming_1 = laser_waza(p1_pot_xx, p1_pot_yy);
-            switch(aiming_1){
+         if(p1_R && shoot){
+            aiming = laser_waza(p1_pot_xx, p1_pot_yy);
+            switch(aiming){
                case 0: 
                case 1:{
                   glcd_line(x_pos_1, y_pos_1, 128, y_pos_1, 1);
-                  if(x_pos_2 > x_pos_1){
-                     if( (y_pos_2 < (y_pos_1 + 4)) && (y_pos_2 > (y_pos_1 - 4))){
-                        new_game = 1;
-                        mode = 'i';
-                        draw_win(1);
-                     }
-                  }
                   break;
                }
                case 2:{
-                  glcd_line(x_pos_1, y_pos_1, x_pos_1, 0, 1);
-                  if(y_pos_2 > y_pos_1){
-                     if( (x_pos_2 < (x_pos_1 + 4)) && (x_pos_2 > (x_pos_1 - 4))){
-                        new_game = 1;
-                        mode = 'i';
-                        draw_win(1);
-                     }
-                  }
+                  glcd_line(x_pos_1, y_pos_1, x_pos, 0, 1);
                   break;
                }
                case 3:{
                   glcd_line(0, y_pos_1, x_pos_1, y_pos_1, 1);
-                  if(x_pos_2 < x_pos_1){
-                     if( (y_pos_2 < (y_pos_1 + 4)) && (y_pos_2 > (y_pos_1 - 4))){
-                        new_game = 1;
-                        mode = 'i';
-                        draw_win(1);
-                     }
-                  }
                   break;
                }
                case 4:{
                   glcd_line(x_pos_1, y_pos_1, x_pos_1, 63, 1);
-                  if(y_pos_2 < y_pos_1){
-                     if( (x_pos_2 < (x_pos_1 + 4)) && (x_pos_2 > (x_pos_1 - 4))){
-                        new_game = 1;
-                        mode = 'i';
-                        draw_win(1);
-                     }
-                  }
                   break;
                }
             }
-            cooldown_1 = 15;
-            shoot_1 = 0;
-            last_bullet_x_pos_1 = x_pos_1;
-            last_bullet_y_pos_1 = y_pos_1;
-
+            cooldown = 20;
+            shoot = 0;
          }
 
-         if(shoot_2){
-            cooldown_2 = 0;
-         }
-         else{
-            cooldown_2--;
-            if(cooldown_2 == 0){
-               shoot_2 = 1;
-            }
-            if(cooldown_2 == 10){
-               switch(aiming_2){
-                  case 0: 
-                  case 1:{
-                     glcd_line(last_bullet_x_pos_2, last_bullet_y_pos_2, 128, last_bullet_y_pos_2, 0);
-                     break;
-                  }
-                  case 2:{
-                     glcd_line(last_bullet_x_pos_2, last_bullet_y_pos_2, last_bullet_x_pos_2, 0, 0);
-                     break;
-                  }
-                  case 3:{
-                     glcd_line(0, last_bullet_y_pos_2, last_bullet_x_pos_2, last_bullet_y_pos_2, 0);
-                     break;
-                  }
-                  case 4:{
-                     glcd_line(last_bullet_x_pos_2, last_bullet_y_pos_2, last_bullet_x_pos_2, 63, 0);
-                     break;
-                  }
-               }
-            }
-         }
-
-         if(p2_L && shoot_2){
-            aiming_2 = laser_waza(p2_pot_xx, p2_pot_yy);
-            switch(aiming_2){
-               case 0: 
-               case 1:{
-                  glcd_line(x_pos_2, y_pos_2, 128, y_pos_2, 1);
-                  if(x_pos_1 > x_pos_2){
-                     if( (y_pos_1 < (y_pos_2 + 4)) && (y_pos_1 > (y_pos_2 - 4))){
-                        new_game = 1;
-                        mode = 'i';
-                        draw_win(0);
-                     }
-                  }
-                  break;
-               }
-               case 2:{
-                  glcd_line(x_pos_2, y_pos_2, x_pos_2, 0, 1);
-                  if(y_pos_1 > y_pos_2){
-                     if( (x_pos_1 < (x_pos_2 + 4)) && (x_pos_1 > (x_pos_2 - 4))){
-                        new_game = 1;
-                        mode = 'i';
-                        draw_win(0);
-                     }
-                  }
-                  break;
-               }
-               case 3:{
-                  glcd_line(0, y_pos_2, x_pos_2, y_pos_2, 1);
-                  if(x_pos_1 < x_pos_2){
-                     if( (y_pos_1 < (y_pos_2 + 4)) && (y_pos_1 > (y_pos_2 - 4))){
-                        new_game = 1;
-                        mode = 'i';
-                        draw_win(0);
-                     }
-                  }
-                  break;
-               }
-               case 4:{
-                  glcd_line(x_pos_2, y_pos_2, x_pos_2, 63, 1);
-                  if(y_pos_1 < y_pos_2){
-                     if( (x_pos_1 < (x_pos_2 + 4)) && (x_pos_1 > (x_pos_2 - 4))){
-                        new_game = 1;
-                        mode = 'i';
-                        draw_win(0);
-                     }
-                  }
-                  break;
-               }
-            }
-            cooldown_2 = 15;
-            shoot_2 = 0;
-            last_bullet_x_pos_2 = x_pos_2;
-            last_bullet_y_pos_2 = y_pos_2;
-         }
 
          
 
@@ -1199,21 +1043,118 @@ float get_y_vel()
    return (float)((float)p1_pot_y - 127.0f) / 30.0f;
 }
 
+float calc_ang_x(int x, int y)
+{
+   if (x < 60)
+   {
+      if (y < 60)
+      {
+         return -5.6568f;
+      }
+      else if (y > 190)
+      {
+         return -5.6568f;
+      }
+      else
+      {
+         return -8f;
+      }
+   }
+   else if (x > 190)
+   {
+      if (y < 60)
+      {
+         return 5.6568f;
+      }
+      else if (y > 190)
+      {
+         return 5.6568f;
+      }
+      else
+      {
+         return 8f;
+      }
+   }
+   else
+   {
+      if (y < 60)
+      {
+         return 0;
+      }
+      else if (y > 190)
+      {
+         return 0;
+      }
+      else
+      {
+         return 8f;
+      }
+   }
+}
 
-int laser_waza(int x, int y){
-   if(x > 205){ // derecha
-      return 2;
-   }
-   else if(x < 50){// izquierda
-      return 4;
-   }
-   if(y > 205){ // arriba
+void laser_waza(int x, int y){
+   if(x > 205){
       return 1;
    }
-   else if(y < 50){ // abajo
+   else if(x < 50){
+      return 2;
+   }
+   if(y > 205){
       return 3;
    }
+   else if(y < 50){
+      return 4;
+   }
    return 0;
+}
+
+float calc_ang_y(int x, int y)
+{
+   if (x < 60)
+   {
+      if (y < 60)
+      {
+         return -5.6568f;
+      }
+      else if (y > 190)
+      {
+         return 5.6568f;
+      }
+      else
+      {
+         return 0;
+      }
+   }
+   else if (x > 190)
+   {
+      if (y < 60)
+      {
+         return -5.6568f;
+      }
+      else if (y > 190)
+      {
+         return 5.6568f;
+      }
+      else
+      {
+         return 0;
+      }
+   }
+   else
+   {
+      if (y < 60)
+      {
+         return -8f;
+      }
+      else if (y > 190)
+      {
+         return 8f;
+      }
+      else
+      {
+         return 0;
+      }
+   }
 }
 
 void draw_cuadrito(int x, int y, int1 col)

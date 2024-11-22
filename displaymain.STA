@@ -1,19 +1,19 @@
 
-ROM used:   17496/32768 (53%)
-            17496/32768 (53%) including unused fragments
+ROM used:   17518/32768 (53%)
+            17518/32768 (53%) including unused fragments
 
-            3.3 Average locations per line
-            14.9 Average locations per statement
+            3.2 Average locations per line
+            14.6 Average locations per statement
 
-RAM used:   613/2048 (30%) at main() level
-            675/2048 (33%) worst case
+RAM used:   599/2048 (29%) at main() level
+            661/2048 (32%) worst case
 
 Stack used: 5 worst case (4 in main + 1 for interrupts)
 Stack size: 31
 
 Lines Stmts  %   Files
 ----- ----- ---  -----
- 1095   674  57  displaymain.c
+ 1232   693  58  displaymain.c
   877     0   0  ..\..\..\..\..\..\..\Program Files (x86)\PICC\Devices\18F4550.h
   444    76   6  ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\HDM64GS12.c
  2228   258  22  ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\math.h
@@ -22,7 +22,7 @@ Lines Stmts  %   Files
    76    13   1  ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\memmgmt.c
   150     0   0  setup_disp.h
 ----- -----
- 5319  1177 Total
+ 5456  1196 Total
 
 Page ROM  %  RAM    Vol Diff  Functions:
 ---- --- --- ---    --- ----  ----------
@@ -46,48 +46,52 @@ Page ROM  %  RAM    Vol Diff  Functions:
 0    614   2    0    307  3.3  @const972
 0    122   0    5     66  2.7  get_d
 0    176   1    0    877  6.3  rcv_data
-0     44   0    0    104  2.4  @goto39442
+0     44   0    0    104  2.4  @goto48850
+0    252   1   32    328  3.7  draw_win
 0    126   0   22    104  2.4  restart_screen
-0   7824  22   77  24940 16.1  MAIN
-0     44   0    3    330  2.4  @DIV88
+0   7786  22   59  26362 16.5  MAIN
+0     44   0    3   1634  8.6  @DIV88
 0     66   0    6   1634  8.6  @WRITEBITA
 0     54   0    5   1634  8.6  @READBITA
-0     32   0    1   1634  8.6  @SPRINTF
-0    128   0    2    447  5.7  @PRINTF_U_1156
+0     36   0    0   1634  8.6  @goto49289
+0     36   0    0   1634  8.6  @goto49365
+0     36   0    0   1634  8.6  @goto49402
+0     36   0    0   1634  8.6  @goto49474
 0    416   1   15   1634  8.6  glcd_line
-0     78   0    2   1634  8.6  @MUL88
+0     78   0    2    709  7.4  @MUL88
 0    704   2    9   2579  5.6  draw_asteroid
 0    366   1   21   1436  9.2  glcd_text57
 0    952   3   40   3408  9.3  inicio
 0    324   1   17   1132  5.6  single_menu
-0    144   0   14    330  2.4  scores
-0    200   1    9     50  2.5  @PRINTF_LU_1156
+0    142   0   14    330  2.4  scores
+0     32   0    1    457  3.7  @SPRINTF
+0    200   1    9    457  3.7  @PRINTF_LU_1215
+0    130   0    2     50  2.5  @PRINTF_U_1215
 0    190   1    0    457  3.7  get_ship_angle
 0    118   0    4     50  2.5  get_x_vel
 0    118   0    4     50  2.5  get_y_vel
-0    200   1    2    520  4.7  calc_ang_x
-0    198   1    2    520  4.7  calc_ang_y
+0     62   0    2    228  4.3  laser_waza
 0    402   1    7   1112  3.0  draw_cuadrito
  Inline         0   1112  3.0  @cinit1
 
 Program metrics:
-    Functions               41
-    Statements              1177
-    Comments                856
-    Volume (V)              89378
-    Difficulty (D)          224.1
-    Effort to implement (E) 20033014
-    Time to implement (T)   309 hours, 9 minutes
-    Est Delivered Bugs (B)  25
-    Cyclomatic Complexity   204
-    Maintainability (MI)    111
+    Functions               45
+    Statements              1196
+    Comments                846
+    Volume (V)              101512
+    Difficulty (D)          254.7
+    Effort to implement (E) 25856008
+    Time to implement (T)   399 hours, 1 minutes
+    Est Delivered Bugs (B)  29
+    Cyclomatic Complexity   264
+    Maintainability (MI)    97
 
  Segment     Used  Free
 -----------  ----  ----
 00000-00002     4  0  
 00004-00006     0  4  
 00008-000AC   166  0  
-000AE-07FFE  17326  15268  
+000AE-07FFE  17348  15246  
 
 
 

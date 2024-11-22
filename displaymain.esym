@@ -1,10 +1,9 @@
-F N "Z" 1 698 ""
-D G "__PCH__" 1 698 ""5.112""
-D G "__DEVICE__" 1 698 "4550"
-D G "__DATE__" 1 698 ""22-Nov-24""
-D G "__TIME__" 1 698 ""11:03:39""
-D G "_UNICODE" 1 698 ""?""
-D G "__EVAL" 1 698 ""?"" "Standard Header file for the PIC18F4550 device ////////////////"
+D G "__PCH__" 0 1143 ""5.112""
+D G "__DEVICE__" 0 1143 "4550"
+D G "__DATE__" 0 1143 ""22-Nov-24""
+D G "__TIME__" 0 1143 ""12:12:38""
+D G "_UNICODE" 0 1143 ""?""
+D G "__EVAL" 0 1143 ""?"" "Standard Header file for the PIC18F4550 device ////////////////"
 c L "set_tris_a" 1 3 6 "FUNCTION"
 F N "set_tris_a" 1 45 ""
 V L "value" 1 45 "int8" `55 
@@ -1766,211 +1765,206 @@ V G "x_pos_2" 0 29 "int8" `991
 V G "y_pos_2" 0 30 "int8" `992 
 V G "dx_2" 0 31 "float" `993 
 V G "dy_2" 0 32 "float" `994 
-V G "last_ship_angle" 0 34 "float" `995 
-V G "ship_angle" 0 35 "float" `996 
-V G "last_x_pos" 0 36 "int8" `997 
-V G "last_y_pos" 0 37 "int8" `998 
-V G "x_pos" 0 38 "int8" `999 
-V G "y_pos" 0 39 "int8" `1000 
-V G "dx" 0 40 "float" `1001 
-V G "dy" 0 41 "float" `1002 
-V G "bullet" 0 43 "int1" `1003 
-V G "last_last_bullet_x_pos" 0 44 "sint8" `1004 
-V G "last_last_bullet_y_pos" 0 45 "sint8" `1005 
-V G "last_bullet_x_pos" 0 46 "sint8" `1006 
-V G "last_bullet_y_pos" 0 47 "sint8" `1007 
-V G "bullet_x_pos" 0 48 "sint16" `1008 
-V G "bullet_y_pos" 0 49 "sint16" `1009 
-V G "bullet_dx" 0 50 "float" `1010 
-V G "bullet_dy" 0 51 "float" `1011 
-V G "bullet_speed" 0 52 "float" `1012 
-V G "bullet_1" 0 54 "int1" `1014 
-V G "last_last_bullet_x_pos_1" 0 55 "sint8" `1015 
-V G "last_last_bullet_y_pos_1" 0 56 "sint8" `1016 
-V G "last_bullet_x_pos_1" 0 57 "sint8" `1017 
-V G "last_bullet_y_pos_1" 0 58 "sint8" `1018 
-V G "bullet_x_pos_1" 0 59 "sint16" `1019 
-V G "bullet_y_pos_1" 0 60 "sint16" `1020 
-V G "bullet_dx_1" 0 61 "float" `1021 
-V G "bullet_dy_1" 0 62 "float" `1022 
-V G "bullet_collision_1" 0 63 "int1" `1023 
-V G "bullet_2" 0 65 "int1" `1024 
-V G "last_last_bullet_x_pos_2" 0 66 "sint8" `1025 
-V G "last_last_bullet_y_pos_2" 0 67 "sint8" `1026 
-V G "last_bullet_x_pos_2" 0 68 "sint8" `1027 
-V G "last_bullet_y_pos_2" 0 69 "sint8" `1028 
-V G "bullet_x_pos_2" 0 70 "sint16" `1029 
-V G "bullet_y_pos_2" 0 71 "sint16" `1030 
-V G "bullet_dx_2" 0 72 "float" `1031 
-V G "bullet_dy_2" 0 73 "float" `1032 
-V G "bullet_collision_2" 0 74 "int1" `1033 
-V G "last_asteroids_x_pos" 0 77 "int8[20]" `1034 
-V G "last_asteroids_y_pos" 0 78 "int8[20]" `1035 
-V G "asteroids_x_pos" 0 79 "int8[20]" `1036 
-V G "asteroids_y_pos" 0 80 "int8[20]" `1037 
-V G "asteroids_dx" 0 81 "sint8[20]" `1038 
-V G "asteroids_dy" 0 82 "sint8[20]" `1039 
-V G "level" 0 84 "int8" `1040 
-V G "best_level" 0 85 "int8" `1041 
-V G "new_level" 0 86 "int1" `1042 
-V G "score" 0 87 "int16" `1043 
-V G "best_score" 0 88 "int16" `1044 
-V G "last_score" 0 89 "int16" `1045 
-V G "last_level" 0 90 "int8" `1046 
-V G "internal_angle" 0 92 "float" `1047 
+V G "shoot_1" 0 34 "int1" `995 
+V G "cooldown_1" 0 35 "int8" `996 
+V G "aiming_1" 0 36 "int8" `997 
+V G "shoot_2" 0 38 "int1" `998 
+V G "cooldown_2" 0 39 "int8" `999 
+V G "aiming_2" 0 40 "int8" `1000 
+V G "last_ship_angle" 0 42 "float" `1001 
+V G "ship_angle" 0 43 "float" `1002 
+V G "last_x_pos" 0 44 "int8" `1003 
+V G "last_y_pos" 0 45 "int8" `1004 
+V G "x_pos" 0 46 "int8" `1005 
+V G "y_pos" 0 47 "int8" `1006 
+V G "dx" 0 48 "float" `1007 
+V G "dy" 0 49 "float" `1008 
+V G "bullet" 0 51 "int1" `1009 
+V G "last_last_bullet_x_pos" 0 52 "sint8" `1010 
+V G "last_last_bullet_y_pos" 0 53 "sint8" `1011 
+V G "last_bullet_x_pos" 0 54 "sint8" `1012 
+V G "last_bullet_y_pos" 0 55 "sint8" `1013 
+V G "bullet_x_pos" 0 56 "sint16" `1014 
+V G "bullet_y_pos" 0 57 "sint16" `1015 
+V G "bullet_dx" 0 58 "float" `1016 
+V G "bullet_dy" 0 59 "float" `1017 
+V G "bullet_speed" 0 60 "float" `1018 
+V G "bullet_1" 0 62 "int1" `1020 
+V G "last_last_bullet_x_pos_1" 0 63 "sint8" `1021 
+V G "last_last_bullet_y_pos_1" 0 64 "sint8" `1022 
+V G "last_bullet_x_pos_1" 0 65 "sint8" `1023 
+V G "last_bullet_y_pos_1" 0 66 "sint8" `1024 
+V G "bullet_x_pos_1" 0 67 "sint16" `1025 
+V G "bullet_y_pos_1" 0 68 "sint16" `1026 
+V G "bullet_dx_1" 0 69 "float" `1027 
+V G "bullet_dy_1" 0 70 "float" `1028 
+V G "bullet_collision_1" 0 71 "int1" `1029 
+V G "bullet_2" 0 73 "int1" `1030 
+V G "last_last_bullet_x_pos_2" 0 74 "sint8" `1031 
+V G "last_last_bullet_y_pos_2" 0 75 "sint8" `1032 
+V G "last_bullet_x_pos_2" 0 76 "sint8" `1033 
+V G "last_bullet_y_pos_2" 0 77 "sint8" `1034 
+V G "bullet_x_pos_2" 0 78 "sint16" `1035 
+V G "bullet_y_pos_2" 0 79 "sint16" `1036 
+V G "bullet_dx_2" 0 80 "float" `1037 
+V G "bullet_dy_2" 0 81 "float" `1038 
+V G "bullet_collision_2" 0 82 "int1" `1039 
+V G "last_asteroids_x_pos" 0 85 "int8[20]" `1040 
+V G "last_asteroids_y_pos" 0 86 "int8[20]" `1041 
+V G "asteroids_x_pos" 0 87 "int8[20]" `1042 
+V G "asteroids_y_pos" 0 88 "int8[20]" `1043 
+V G "asteroids_dx" 0 89 "sint8[20]" `1044 
+V G "asteroids_dy" 0 90 "sint8[20]" `1045 
+V G "level" 0 92 "int8" `1046 
+V G "best_level" 0 93 "int8" `1047 
+V G "new_level" 0 94 "int1" `1048 
+V G "score" 0 95 "int16" `1049 
+V G "best_score" 0 96 "int16" `1050 
+V G "last_score" 0 97 "int16" `1051 
+V G "last_level" 0 98 "int8" `1052 
+V G "internal_angle" 0 100 "float" `1053 
 C L "glcd_line" 0 15 1 "FUNCTION"
-F N "glcd_line" 0 94 ""
-V L "x1" 0 94 "int8" `1050 
-V L "y1" 0 94 "int8" `1051 
-V L "x2" 0 94 "int8" `1052 
-V L "y2" 0 94 "int8" `1053 
-V L "color" 0 94 "int8" `1054 
-f G "glcd_line" 0 94 "void(int8 x1,int8 y1,int8 x2,int8 y2,int8 color)" `1049 
-F N "draw_triangle" 0 95 ""
-V L "x" 0 95 "int8" `1056 
-V L "y" 0 95 "int8" `1057 
-V L "starting_angle" 0 95 "float" `1058 
-V L "color" 0 95 "int8" `1059 
-f G "draw_triangle" 0 95 "void(int8 x,int8 y,float starting_angle,int8 color)" `1055 
-F N "glcd_lineTracing" 0 96 ""
-V L "xx" 0 96 "*int8" `1061 
-V L "yy" 0 96 "*int8" `1062 
-V L "n_points" 0 96 "int8" `1063 
-V L "color" 0 96 "int8" `1064 
-f G "glcd_lineTracing" 0 96 "void(*int8 xx,*int8 yy,int8 n_points,int8 color)" `1060 
-F N "draw_asteroid" 0 97 ""
-V L "x" 0 97 "int8" `1066 
-V L "y" 0 97 "int8" `1067 
-V L "life" 0 97 "int8" `1068 
-V L "color" 0 97 "int8" `1069 
-f G "draw_asteroid" 0 97 "void(int8 x,int8 y,int8 life,int8 color)" `1065 
-F N "glcd_text57" 0 98 ""
-V L "x" 0 98 "int8" `1071 
-V L "y" 0 98 "int8" `1072 
-V L "textptr" 0 98 "*int8" `1073 
-V L "size" 0 98 "int8" `1074 
-V L "color" 0 98 "int8" `1075 
-f G "glcd_text57" 0 98 "void(int8 x,int8 y,*int8 textptr,int8 size,int8 color)" `1070 
-F N "inicio" 0 99 ""
-V L "sec" 0 99 "int8" `1077 
-f G "inicio" 0 99 "void(int8 sec)" `1076 
-F N "scores" 0 100 ""
-V L "scr" 0 100 "int16" `1079 
-V L "lvl" 0 100 "int8" `1080 
-V L "color" 0 100 "int8" `1081 
-f G "scores" 0 100 "void(int16 scr,int8 lvl,int8 color)" `1078 
-F N "single_menu" 0 101 ""
-V L "play" 0 101 "int8" `1083 
-f G "single_menu" 0 101 "void(int8 play)" `1082 
-F N "get_ship_angle" 0 103 ""
-f G "get_ship_angle" 0 103 "float()" `1084 
-F N "get_x_vel" 0 104 ""
-f G "get_x_vel" 0 104 "float()" `1085 
-F N "get_y_vel" 0 105 ""
-f G "get_y_vel" 0 105 "float()" `1086 
-V G "dataRS232" 0 107 "int8" `1087 
-V G "mode" 0 109 "int8" `1088 
-V G "mode_inic" 0 110 "int8" `1089 
-V G "flagg" 0 112 "int1" `1090 
-V G "flag_rec" 0 113 "int1" `1091 
-V G "current_data" 0 115 "int8" `1092 
-V G "p1_pot_x" 0 117 "int8" `1093 
-V G "p1_pot_y" 0 118 "int8" `1094 
-V G "p1_pot_xx" 0 119 "int8" `1095 
-V G "p1_pot_yy" 0 120 "int8" `1096 
-V G "p1_L" 0 121 "int1" `1097 
-V G "p1_R" 0 122 "int1" `1098 
-F N "calc_ang_x" 0 124 ""
-V L "x" 0 124 "int8" `1100 
-V L "y" 0 124 "int8" `1101 
-f G "calc_ang_x" 0 124 "float(int8 x,int8 y)" `1099 
-F N "calc_ang_y" 0 125 ""
-V L "x" 0 125 "int8" `1103 
-V L "y" 0 125 "int8" `1104 
-f G "calc_ang_y" 0 125 "float(int8 x,int8 y)" `1102 
-F N "get_d" 0 127 ""
-V L "pp" 0 127 "int8" `1106 
-F G "get_d" 0 127 "float(int8 pp)" `1105 
-V G "p2_pot_x" 0 131 "int8" `1107 
-V G "p2_pot_y" 0 132 "int8" `1108 
-V G "p2_pot_xx" 0 133 "int8" `1109 
-V G "p2_pot_yy" 0 134 "int8" `1110 
-V G "p2_L" 0 135 "int1" `1111 
-V G "p2_R" 0 136 "int1" `1112 
-F N "rcv_data" 0 139 ""
-F G "rcv_data" 0 139 "void()" `1113 
-F N "draw_cuadrito" 0 181 ""
-V L "x" 0 181 "int8" `1116 
-V L "y" 0 181 "int8" `1117 
-V L "col" 0 181 "int8" `1118 
-f G "draw_cuadrito" 0 181 "void(int8 x,int8 y,int8 col)" `1115 
-F N "restart_screen" 0 183 ""
-F G "restart_screen" 0 183 "void()" `1119 
-V L "text_asteroids" 0 185 "int8[1]" `1120 
-F N "MAIN" 0 189 ""
-F G "MAIN" 0 189 "void()" `1121 
-V L "inic_men" 0 199 "int8" `1124 
-V L "last_inic_men" 0 200 "int8" `1125 
-V L "single_men" 0 202 "int8" `1126 
-V L "last_single_men" 0 203 "int8" `1127 
-V L "win" 0 207 "int1" `1128 
-V L "who" 0 208 "int1" `1129 
-V L "bullet_collision" 0 210 "int1" `1130 
-V L "sfx_time" 0 211 "int8" `1131 
-V L "asteroids_lifes" 0 213 "int8[20]" `1132  "puede haber hasta 20 asteroides en la pantalla;"
-V L "asteroid_lost_a_life" 0 214 "int1[20]" `1133 
-V L "temp" 0 216 "int8" `1134 
-V L "new_game" 0 217 "int1" `1135 
+F N "glcd_line" 0 102 ""
+V L "x1" 0 102 "int8" `1056 
+V L "y1" 0 102 "int8" `1057 
+V L "x2" 0 102 "int8" `1058 
+V L "y2" 0 102 "int8" `1059 
+V L "color" 0 102 "int8" `1060 
+f G "glcd_line" 0 102 "void(int8 x1,int8 y1,int8 x2,int8 y2,int8 color,float y1,int8 color)" `1055 
+F N "draw_triangle" 0 103 ""
+V L "x" 0 103 "int8" `1062 
+V L "y" 0 103 "int8" `1063 
+V L "starting_angle" 0 103 "float" `1064 
+V L "color" 0 103 "int8" `1065 
+f G "draw_triangle" 0 103 "void(int8 x,int8 y,float starting_angle,int8 color,int8 n_points,int8 color)" `1061 
+F N "glcd_lineTracing" 0 104 ""
+V L "xx" 0 104 "*int8" `1067 
+V L "yy" 0 104 "*int8" `1068 
+V L "n_points" 0 104 "int8" `1069 
+V L "color" 0 104 "int8" `1070 
+f G "glcd_lineTracing" 0 104 "void(*int8 xx,*int8 yy,int8 n_points,int8 color,int8 yy,int8 color)" `1066 
+F N "draw_asteroid" 0 105 ""
+V L "x" 0 105 "int8" `1072 
+V L "y" 0 105 "int8" `1073 
+V L "life" 0 105 "int8" `1074 
+V L "color" 0 105 "int8" `1075 
+f G "draw_asteroid" 0 105 "void(int8 x,int8 y,int8 life,int8 color,*int8 draw_asteroid,int8 size,int8 color)" `1071 
+F N "glcd_text57" 0 106 ""
+V L "x" 0 106 "int8" `1077 
+V L "y" 0 106 "int8" `1078 
+V L "textptr" 0 106 "*int8" `1079 
+V L "size" 0 106 "int8" `1080 
+V L "color" 0 106 "int8" `1081 
+f G "glcd_text57" 0 106 "void(int8 x,int8 y,*int8 textptr,int8 size,int8 color,int16 scr,int8 lvl,int8 color)" `1076 
+F N "inicio" 0 107 ""
+V L "sec" 0 107 "int8" `1083 
+f G "inicio" 0 107 "void(int8 sec,int8 color)" `1082 
+F N "scores" 0 108 ""
+V L "scr" 0 108 "int16" `1085 
+V L "lvl" 0 108 "int8" `1086 
+V L "color" 0 108 "int8" `1087 
+f G "scores" 0 108 "void(int16 scr,int8 lvl,int8 color,int8 x,int8 y)" `1084 
+F N "single_menu" 0 109 ""
+V L "play" 0 109 "int8" `1089 
+f G "single_menu" 0 109 "void(int8 play)" `1088 
+F N "laser_waza" 0 110 ""
+V L "x" 0 110 "int8" `1091 
+V L "y" 0 110 "int8" `1092 
+f G "laser_waza" 0 110 "int8(int8 x,int8 y)" `1090 
+F N "get_ship_angle" 0 112 ""
+f G "get_ship_angle" 0 112 "float()" `1093 
+F N "get_x_vel" 0 113 ""
+f G "get_x_vel" 0 113 "float()" `1094 
+F N "get_y_vel" 0 114 ""
+f G "get_y_vel" 0 114 "float()" `1095 
+V G "dataRS232" 0 116 "int8" `1096 
+V G "mode" 0 118 "int8" `1097 
+V G "mode_inic" 0 119 "int8" `1098 
+V G "flagg" 0 121 "int1" `1099 
+V G "flag_rec" 0 122 "int1" `1100 
+V G "current_data" 0 124 "int8" `1101 
+V G "p1_pot_x" 0 126 "int8" `1102 
+V G "p1_pot_y" 0 127 "int8" `1103 
+V G "p1_pot_xx" 0 128 "int8" `1104 
+V G "p1_pot_yy" 0 129 "int8" `1105 
+V G "p1_L" 0 130 "int1" `1106 
+V G "p1_R" 0 131 "int1" `1107 
+F N "calc_ang_x" 0 133 ""
+V L "x" 0 133 "int8" `1109 
+V L "y" 0 133 "int8" `1110 
+f G "calc_ang_x" 0 133 "float(int8 x,int8 y)" `1108 
+F N "calc_ang_y" 0 134 ""
+V L "x" 0 134 "int8" `1112 
+V L "y" 0 134 "int8" `1113 
+f G "calc_ang_y" 0 134 "float(int8 x,int8 y)" `1111 
+F N "get_d" 0 136 ""
+V L "pp" 0 136 "int8" `1115 
+F G "get_d" 0 137 "float(int8 pp)" `1114 
+V G "p2_pot_x" 0 141 "int8" `1116 
+V G "p2_pot_y" 0 142 "int8" `1117 
+V G "p2_pot_xx" 0 143 "int8" `1118 
+V G "p2_pot_yy" 0 144 "int8" `1119 
+V G "p2_L" 0 145 "int1" `1120 
+V G "p2_R" 0 146 "int1" `1121 
+F N "rcv_data" 0 149 ""
+F G "rcv_data" 0 150 "void(int8 y,int8 rcv_data)" `1122 
+F N "draw_cuadrito" 0 193 ""
+V L "x" 0 193 "int8" `1125 
+V L "y" 0 193 "int8" `1126 
+V L "col" 0 193 "int8" `1127 
+f G "draw_cuadrito" 0 193 "void(int8 x,int8 y,int8 col)" `1124 
+F N "draw_win" 0 195 ""
+V L "w" 0 195 "int8" `1129 
+F G "draw_win" 0 195 "void(int8 w)" `1128 
+V L "text_asteroids" 0 198 "int8[1]" `1130 
+V L "text_asteroids" 0 204 "int8[1]" `1131 
+F N "restart_screen" 0 210 ""
+F G "restart_screen" 0 211 "void()" `1132 
+V L "text_asteroids" 0 213 "int8[1]" `1133 
+F N "MAIN" 0 217 ""
+F G "MAIN" 0 218 "void()" `1134 
+V L "inic_men" 0 228 "int8" `1137 
+V L "last_inic_men" 0 229 "int8" `1138 
+V L "single_men" 0 231 "int8" `1139 
+V L "last_single_men" 0 232 "int8" `1140 
+V L "win" 0 236 "int1" `1141 
+V L "who" 0 237 "int1" `1142 
+V L "bullet_collision" 0 239 "int1" `1143 
+V L "sfx_time" 0 240 "int8" `1144 
+V L "asteroids_lifes" 0 242 "int8[20]" `1145  "puede haber hasta 20 asteroides en la pantalla;"
+V L "asteroid_lost_a_life" 0 243 "int1[20]" `1146 
+V L "temp" 0 245 "int8" `1147 
+V L "new_game" 0 246 "int1" `1148 
 C L "MAIN" 0 15 1 "FUNCTION"
 C L "MAIN" 0 15 1 "FUNCTION"
 C L "MAIN" 0 15 1 "FUNCTION"
 C L "MAIN" 0 15 1 "FUNCTION"
-V L "i" 0 323 "int8" `1136 
+V L "i" 0 375 "int8" `1149 
 C L "MAIN" 0 15 1 "FUNCTION"
-V L "i" 0 333 "int8" `1137 
-C L "MAIN" 0 15 1 "FUNCTION"
-C L "MAIN" 0 15 1 "FUNCTION"
-C L "MAIN" 0 15 1 "FUNCTION"
-C L "MAIN" 0 15 1 "FUNCTION"
-C L "MAIN" 0 15 1 "FUNCTION"
-C L "MAIN" 0 15 1 "FUNCTION"
-V L "i" 0 354 "int8" `1141 
-C L "MAIN" 0 15 1 "FUNCTION"
-V L "i" 0 370 "int8" `1142 
-C L "MAIN" 0 15 1 "FUNCTION"
-C L "MAIN" 0 15 1 "FUNCTION"
-C L "MAIN" 0 15 1 "FUNCTION"
-C L "MAIN" 0 15 1 "FUNCTION"
-V L "i" 0 392 "int8" `1143 
-C L "MAIN" 0 15 1 "FUNCTION"
-C L "MAIN" 0 15 1 "FUNCTION"
-C L "MAIN" 0 15 1 "FUNCTION"
-C L "MAIN" 0 15 1 "FUNCTION"
-V L "i" 0 429 "int8" `1148 
-C L "MAIN" 0 15 1 "FUNCTION"
-C L "MAIN" 0 15 1 "FUNCTION"
-C L "MAIN" 0 15 1 "FUNCTION"
-V L "i" 0 483 "int8" `1152 
+V L "i" 0 387 "int8" `1150 
 C L "MAIN" 0 15 1 "FUNCTION"
 C L "MAIN" 0 15 1 "FUNCTION"
 C L "MAIN" 0 15 1 "FUNCTION"
 C L "MAIN" 0 15 1 "FUNCTION"
 C L "MAIN" 0 15 1 "FUNCTION"
 C L "MAIN" 0 15 1 "FUNCTION"
+V L "i" 0 410 "int8" `1154 
+C L "MAIN" 0 15 1 "FUNCTION"
+V L "i" 0 427 "int8" `1155 
 C L "MAIN" 0 15 1 "FUNCTION"
 C L "MAIN" 0 15 1 "FUNCTION"
 C L "MAIN" 0 15 1 "FUNCTION"
 C L "MAIN" 0 15 1 "FUNCTION"
+V L "i" 0 452 "int8" `1156 
 C L "MAIN" 0 15 1 "FUNCTION"
 C L "MAIN" 0 15 1 "FUNCTION"
 C L "MAIN" 0 15 1 "FUNCTION"
 C L "MAIN" 0 15 1 "FUNCTION"
-V L "as" 0 554 "int8[6]" `1153 
+V L "i" 0 496 "int8" `1161 
 C L "MAIN" 0 15 1 "FUNCTION"
 C L "MAIN" 0 15 1 "FUNCTION"
 C L "MAIN" 0 15 1 "FUNCTION"
-V L "wazaazaz" 0 584 "int8[1]" `1163 
-V L "as" 0 587 "int8[6]" `1164 
+V L "i" 0 552 "int8" `1165 
 C L "MAIN" 0 15 1 "FUNCTION"
 C L "MAIN" 0 15 1 "FUNCTION"
 C L "MAIN" 0 15 1 "FUNCTION"
@@ -1978,61 +1972,66 @@ C L "MAIN" 0 15 1 "FUNCTION"
 C L "MAIN" 0 15 1 "FUNCTION"
 C L "MAIN" 0 15 1 "FUNCTION"
 C L "MAIN" 0 15 1 "FUNCTION"
-V L "tewion" 0 668 "int8[1]" `1166 
-V L "tewion" 0 674 "int8[1]" `1167 
-F N "glcd_line" 0 691 ""
-V L "x1" 0 691 "int8" `1050 
-V L "y1" 0 691 "int8" `1051 
-V L "x2" 0 691 "int8" `1052 
-V L "y2" 0 691 "int8" `1053 
-V L "color" 0 691 "int8" `1174 
-F G "glcd_line" 0 691 "void(int8 x1,int8 y1,int8 x2,int8 y2,int8 color)" `1049 
-V L "x" 0 692 "sint8" `1169 
-V L "y" 0 692 "sint8" `1170 
-V L "addx" 0 692 "sint8" `1171 
-V L "addy" 0 692 "sint8" `1172 
-V L "dx" 0 692 "sint8" `1173 
-V L "dy" 0 692 "sint8" `1174 
-V L "p" 0 693 "sint16" `1175 
-V L "i" 0 694 "int8" `1176 
-F N "glcd_lineTracing" 0 752 ""
-V L "xx" 0 752 "*int8" `1061 
-V L "yy" 0 752 "*int8" `1062 
-V L "n_points" 0 752 "int8" `1063 
-V L "color" 0 752 "int8" `1184 
-F G "glcd_lineTracing" 0 752 "void(*int8 xx,*int8 yy,int8 n_points,int8 color)" `1060 
-V L "i" 0 753 "int8" `1180 
+C L "MAIN" 0 15 1 "FUNCTION"
+C L "MAIN" 0 15 1 "FUNCTION"
+C L "MAIN" 0 15 1 "FUNCTION"
+C L "MAIN" 0 15 1 "FUNCTION"
+C L "MAIN" 0 15 1 "FUNCTION"
+V L "tewion" 0 806 "int8[1]" `1170 
+V L "tewion" 0 813 "int8[1]" `1171 
+F N "glcd_line" 0 830 ""
+V L "x1" 0 830 "int8" `1056 
+V L "y1" 0 830 "int8" `1057 
+V L "x2" 0 830 "int8" `1058 
+V L "y2" 0 830 "int8" `1059 
+V L "color" 0 830 "int8" `1178 
+F G "glcd_line" 0 831 "void(int8 x1,int8 y1,int8 x2,int8 y2,int8 color)" `1055 
+V L "x" 0 832 "sint8" `1173 
+V L "y" 0 832 "sint8" `1174 
+V L "addx" 0 832 "sint8" `1175 
+V L "addy" 0 832 "sint8" `1176 
+V L "dx" 0 832 "sint8" `1177 
+V L "dy" 0 832 "sint8" `1178 
+V L "p" 0 833 "sint16" `1179 
+V L "i" 0 834 "int8" `1180 
+F N "glcd_lineTracing" 0 892 ""
+V L "xx" 0 892 "*int8" `1067 
+V L "yy" 0 892 "*int8" `1068 
+V L "n_points" 0 892 "int8" `1069 
+V L "color" 0 892 "int8" `1188 
+F G "glcd_lineTracing" 0 893 "void(*int8 xx,*int8 yy,int8 n_points,int8 color)" `1066 
+V L "i" 0 894 "int8" `1184 
 C L "glcd_lineTracing" 0 15 1 "FUNCTION"
-F N "draw_triangle" 0 759 ""
-V L "x" 0 759 "int8" `1056 
-V L "y" 0 759 "int8" `1057 
-V L "starting_angle" 0 759 "float" `1058 
-V L "color" 0 759 "int8" `1185 
-F G "draw_triangle" 0 759 "void(int8 x,int8 y,float starting_angle,int8 color)" `1055 
-V L "x_points_on_glcd" 0 760 "int8" `1181 
-V L "y_points_on_glcd" 0 761 "int8" `1182 
-V L "i" 0 763 "int8" `1183 
-F N "draw_asteroid" 0 773 ""
-V L "x" 0 773 "int8" `1066 
-V L "y" 0 773 "int8" `1067 
-V L "life" 0 773 "int8" `1068 
-V L "color" 0 773 "int8" `1188 
-F G "draw_asteroid" 0 773 "void(int8 x,int8 y,int8 life,int8 color)" `1065 
-V L "x2" 0 774 "int8" `1184 
-V L "y2" 0 775 "int8" `1185 
-F N "glcd_text57" 0 820 ""
-V L "x" 0 820 "int8" `1071 
-V L "y" 0 820 "int8" `1072 
-V L "textptr" 0 820 "*int8" `1073 
-V L "size" 0 820 "int8" `1074 
-V L "color" 0 820 "int8" `1191 
-F G "glcd_text57" 0 820 "void(int8 x,int8 y,*int8 textptr,int8 size,int8 color)" `1070 
-V L "i" 0 822 "int8" `1186 
-V L "j" 0 822 "int8" `1187 
-V L "k" 0 822 "int8" `1188 
-V L "l" 0 822 "int8" `1189 
-V L "m" 0 822 "int8" `1190  "Loop counters"
-V L "pixelData" 0 823 "int8[5]" `1191  "Stores character data"
+F N "draw_triangle" 0 901 ""
+V L "x" 0 901 "int8" `1062 
+V L "y" 0 901 "int8" `1063 
+V L "starting_angle" 0 901 "float" `1064 
+V L "color" 0 901 "int8" `1189 
+F G "draw_triangle" 0 902 "void(int8 x,int8 y,float starting_angle,int8 color)" `1061 
+V L "x_points_on_glcd" 0 903 "int8" `1185 
+V L "y_points_on_glcd" 0 904 "int8" `1186 
+V L "i" 0 906 "int8" `1187 
+F N "draw_asteroid" 0 917 ""
+V L "x" 0 917 "int8" `1072 
+V L "y" 0 917 "int8" `1073 
+V L "life" 0 917 "int8" `1074 
+V L "color" 0 917 "int8" `1192 
+F G "draw_asteroid" 0 918 "void(int8 x,int8 y,int8 life,int8 color)" `1071 
+V L "x2" 0 919 "int8" `1188 
+V L "y2" 0 920 "int8" `1189 
+F N "glcd_text57" 0 971 ""
+V L "x" 0 971 "int8" `1077 
+V L "y" 0 971 "int8" `1078 
+V L "textptr" 0 971 "*int8" `1079 
+V L "size" 0 971 "int8" `1080 
+V L "color" 0 971 "int8" `1195 
+F G "glcd_text57" 0 972 "void(int8 x,int8 y,*int8 textptr,int8 size,int8 color)" `1076 
+V L "i" 0 974 "int8" `1190 
+V L "j" 0 974 "int8" `1191 
+V L "k" 0 974 "int8" `1192 
+V L "l" 0 974 "int8" `1193 
+V L "m" 0 974 "int8" `1194  "Loop counters"
+V L "pixelData" 0 975 "int8[5]" `1195  "Stores character data"
 C L "glcd_text57" 0 15 1 "FUNCTION"
 C L "glcd_text57" 0 15 1 "FUNCTION"
 C L "glcd_text57" 0 15 1 "FUNCTION"
@@ -2046,54 +2045,54 @@ C L "glcd_text57" 0 15 1 "FUNCTION"
 C L "glcd_text57" 0 15 1 "FUNCTION"
 C L "glcd_text57" 0 15 1 "FUNCTION"
 C L "glcd_text57" 0 15 1 "FUNCTION"
-F N "inicio" 0 858 ""
-V L "sec" 0 858 "int8" `1193 
-F G "inicio" 0 858 "void(int8 sec)" `1076 
-V L "text_asteroids" 0 861 "int8[1]" `1192 
-V L "i" 0 864 "int8" `1193 
-V L "j" 0 865 "int8" `1194 
-V L "text_asteroids" 0 883 "int8[1]" `1195 
-V L "i" 0 886 "int8" `1196 
-V L "j" 0 887 "int8" `1197 
-V L "i" 0 905 "int8" `1198 
-V L "text_asteroids" 0 908 "int8[1]" `1199 
-V L "i" 0 911 "int8" `1200 
-V L "j" 0 912 "int8" `1201 
-F N "single_menu" 0 932 ""
-V L "play" 0 932 "int8" `1203 
-F G "single_menu" 0 932 "void(int8 play)" `1082 
-V L "text_ret" 0 933 "int8[1]" `1202 
-V L "text_play" 0 934 "int8[1]" `1203 
-V L "i" 0 936 "int8" `1204 
-V L "i" 0 941 "int8" `1205 
-V L "i" 0 947 "int8" `1206 
-V L "i" 0 952 "int8" `1207 
-F N "scores" 0 960 ""
-V L "scr" 0 960 "int16" `1079 
-V L "lvl" 0 960 "int8" `1080 
-V L "color" 0 960 "int8" `1211 
-F G "scores" 0 960 "void(int16 scr,int8 lvl,int8 color)" `1078 
-V L "text_score" 0 961 "int8[6]" `1208 
-V L "text_level" 0 964 "int8[4]" `1212 
-F N "get_ship_angle" 0 969 ""
-F G "get_ship_angle" 0 969 "float()" `1084 
-F N "get_x_vel" 0 1005 ""
-F G "get_x_vel" 0 1005 "float()" `1085 
-F N "get_y_vel" 0 1008 ""
-F G "get_y_vel" 0 1008 "float()" `1086 
-F N "calc_ang_x" 0 1012 ""
-V L "x" 0 1012 "int8" `1100 
-V L "y" 0 1012 "int8" `1216 
-F G "calc_ang_x" 0 1012 "float(int8 x,int8 y)" `1099 
-F N "calc_ang_y" 0 1048 ""
-V L "x" 0 1048 "int8" `1103 
-V L "y" 0 1048 "int8" `1216 
-F G "calc_ang_y" 0 1048 "float(int8 x,int8 y)" `1102 
-F N "draw_cuadrito" 0 1084 ""
-V L "x" 0 1084 "int8" `1116 
-V L "y" 0 1084 "int8" `1117 
-V L "col" 0 1084 "int8" `1217 
-F G "draw_cuadrito" 0 1084 "void(int8 x,int8 y,int8 col)" `1115 
+F N "inicio" 0 1010 ""
+V L "sec" 0 1010 "int8" `1197 
+F G "inicio" 0 1011 "void(int8 sec)" `1082 
+V L "text_asteroids" 0 1016 "int8[1]" `1196 
+V L "i" 0 1019 "int8" `1197 
+V L "j" 0 1021 "int8" `1198 
+V L "text_asteroids" 0 1043 "int8[1]" `1199 
+V L "i" 0 1046 "int8" `1200 
+V L "j" 0 1048 "int8" `1201 
+V L "i" 0 1070 "int8" `1202 
+V L "text_asteroids" 0 1074 "int8[1]" `1203 
+V L "i" 0 1077 "int8" `1204 
+V L "j" 0 1079 "int8" `1205 
+F N "single_menu" 0 1102 ""
+V L "play" 0 1102 "int8" `1207 
+F G "single_menu" 0 1103 "void(int8 play)" `1088 
+V L "text_ret" 0 1104 "int8[1]" `1206 
+V L "text_play" 0 1105 "int8[1]" `1207 
+V L "i" 0 1108 "int8" `1208 
+V L "i" 0 1114 "int8" `1209 
+V L "i" 0 1122 "int8" `1210 
+V L "i" 0 1128 "int8" `1211 
+F N "scores" 0 1136 ""
+V L "scr" 0 1136 "int16" `1085 
+V L "lvl" 0 1136 "int8" `1086 
+V L "color" 0 1136 "int8" `1215 
+F G "scores" 0 1137 "void(int16 scr,int8 lvl,int8 color)" `1084 
+V L "text_score" 0 1138 "int8[6]" `1212 
+V L "text_level" 0 1141 "int8[4]" `1219 
+F N "get_ship_angle" 0 1146 ""
+F G "get_ship_angle" 0 1147 "float()" `1093 
+F N "get_x_vel" 0 1194 ""
+F G "get_x_vel" 0 1195 "float()" `1094 
+F N "get_y_vel" 0 1198 ""
+F G "get_y_vel" 0 1199 "float()" `1095 
+F N "laser_waza" 0 1204 ""
+V L "x" 0 1204 "int8" `1091 
+V L "y" 0 1204 "int8" `1226 
+F G "laser_waza" 0 1204 "int8(int8 x,int8 y)" `1090 
+C L "laser_waza" 0 15 1 "FUNCTION"
+C L "laser_waza" 0 15 1 "FUNCTION"
+C L "laser_waza" 0 15 1 "FUNCTION"
+C L "laser_waza" 0 15 1 "FUNCTION"
+F N "draw_cuadrito" 0 1220 ""
+V L "x" 0 1220 "int8" `1125 
+V L "y" 0 1220 "int8" `1126 
+V L "col" 0 1220 "int8" `1227 
+F G "draw_cuadrito" 0 1221 "void(int8 x,int8 y,int8 col)" `1124 
 F B "reset_cpu" 0 0
 F B "abs" 1 0
 F B "sleep" 0 1

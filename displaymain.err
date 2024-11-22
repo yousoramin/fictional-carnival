@@ -1,13 +1,27 @@
-Compiling C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain on 22-nov.-24 at 11:03
->>> Warning 240 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain.c" Line 768(21,37): Pointer types do not match
->>> Warning 240 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain.c" Line 768(38,54): Pointer types do not match
+Compiling C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain on 22-nov.-24 at 12:12
+>>> Warning 240 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain.c" Line 912(21,37): Pointer types do not match
+>>> Warning 240 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain.c" Line 912(39,55): Pointer types do not match
 >>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain.c" Line 16(7,24): Variable never used:   last_ship_angle_1
 >>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain.c" Line 17(7,19): Variable never used:   ship_angle_1
 >>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain.c" Line 25(7,24): Variable never used:   last_ship_angle_2
 >>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain.c" Line 26(7,19): Variable never used:   ship_angle_2
->>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain.c" Line 110(6,15): Variable never used:   mode_inic
->>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain.c" Line 112(6,11): Variable never used:   flagg
->>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain.c" Line 113(6,14): Variable never used:   flag_rec
-      Memory usage:   ROM=53%      RAM=30% - 33%
-      0 Errors,  9 Warnings.
+>>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain.c" Line 63(12,36): Variable never used:   last_last_bullet_x_pos_1
+>>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain.c" Line 64(12,36): Variable never used:   last_last_bullet_y_pos_1
+>>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain.c" Line 67(14,28): Variable never used:   bullet_x_pos_1
+>>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain.c" Line 68(14,28): Variable never used:   bullet_y_pos_1
+>>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain.c" Line 69(7,18): Variable never used:   bullet_dx_1
+>>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain.c" Line 70(7,18): Variable never used:   bullet_dy_1
+>>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain.c" Line 71(6,24): Variable never used:   bullet_collision_1
+>>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain.c" Line 74(12,36): Variable never used:   last_last_bullet_x_pos_2
+>>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain.c" Line 75(12,36): Variable never used:   last_last_bullet_y_pos_2
+>>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain.c" Line 78(14,28): Variable never used:   bullet_x_pos_2
+>>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain.c" Line 79(14,28): Variable never used:   bullet_y_pos_2
+>>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain.c" Line 80(7,18): Variable never used:   bullet_dx_2
+>>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain.c" Line 81(7,18): Variable never used:   bullet_dy_2
+>>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain.c" Line 82(6,24): Variable never used:   bullet_collision_2
+>>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain.c" Line 119(6,15): Variable never used:   mode_inic
+>>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain.c" Line 121(6,11): Variable never used:   flagg
+>>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain.c" Line 122(6,14): Variable never used:   flag_rec
+      Memory usage:   ROM=53%      RAM=29% - 32%
+      0 Errors,  23 Warnings.
 Build Successful.
