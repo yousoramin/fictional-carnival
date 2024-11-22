@@ -1,0 +1,25 @@
+#include <18F4550.h>
+
+#fuses NOLVP, NOPROTECT, NOMCLR, NOWDT
+#use delay(clock = 20M, crystal = 20M)
+
+#include <HDM64GS12.c>
+
+
+void main(){
+
+   glcd_init(ON);
+   glcd_fillScreen(0);
+
+   while(TRUE){
+      for(int i = 0; i < 64; i++){
+         glcd_line(0,i,128,i,1);
+      }
+      delay_ms(300)
+      for(int i = 0; i < 64; i++){
+         glcd_line(0,i,128,i,0);
+      }
+      delay_ms(300)
+   }
+
+}

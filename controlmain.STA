@@ -1,0 +1,54 @@
+
+ROM used:   826/32768 (3%)
+            826/32768 (3%) including unused fragments
+
+            0.2 Average locations per line
+            1.7 Average locations per statement
+
+RAM used:   51/2048 (2%) at main() level
+            69/2048 (3%) worst case
+
+Stack used: 2 worst case (1 in main + 1 for interrupts)
+Stack size: 31
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+  144    70  14  controlmain.c
+  877     0   0  ..\..\..\..\..\..\..\Program Files (x86)\PICC\Devices\18F4550.h
+ 2228   258  52  ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\math.h
+  417   156  31  ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stdlibm.h
+   32     0   0  ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stddef.h
+   76    13   3  ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\memmgmt.c
+----- -----
+ 3774   497 Total
+
+Page ROM  %  RAM    Vol Diff  Functions:
+---- --- --- ---    --- ----  ----------
+0     40   2    1             @delay_ms1
+0     20   1    0     54  1.5  rcv_data
+0    284  17    2    806  3.8  MAIN
+0    156   9    0    448  2.8  get_inputs_1
+0    156   9    0    448  2.8  get_inputs_2
+ Inline         0   1634  8.6  @cinit1
+
+Program metrics:
+    Functions               5
+    Statements              497
+    Comments                527
+    Volume (V)              4477
+    Difficulty (D)          19.8
+    Effort to implement (E) 88829
+    Time to implement (T)   1 hours, 22 minutes
+    Est Delivered Bugs (B)  1
+    Cyclomatic Complexity   16
+    Maintainability (MI)    51
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     4  0  
+00004-00006     0  4  
+00008-000AC   166  0  
+000AE-07FFE   656  31938  
+
+
+

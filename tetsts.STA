@@ -1,0 +1,53 @@
+
+ROM used:   1182/32768 (4%)
+            1182/32768 (4%) including unused fragments
+
+            0.8 Average locations per line
+            9.5 Average locations per statement
+
+RAM used:   7/2048 (0%) at main() level
+            29/2048 (1%) worst case
+
+Stack used: 3 worst case (3 in main + 0 for interrupts)
+Stack size: 31
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   87    49  39  tetsts.c
+  877     0   0  ..\..\..\..\..\..\..\Program Files (x86)\PICC\Devices\18F4550.h
+  444    76  61  ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\HDM64GS12.c
+----- -----
+ 1408   125 Total
+
+Page ROM  %  RAM    Vol Diff  Functions:
+---- --- --- ---    --- ----  ----------
+0     38   2    1    555  3.4  @delay_ms1
+0    124   5    1    555  3.4  glcd_init
+0    212   9    7    779  7.2  glcd_pixel
+0    106   4    4    506  4.8  glcd_fillScreen
+0     70   3    2    307  2.8  glcd_writeByte
+0     62   3    2    307  3.3  glcd_readByte
+0    372  16   15   1634  8.6  glcd_line
+0     74   3    2    743  5.9  @MUL88
+0    120   5    3    402  4.4  MAIN
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               9
+    Statements              125
+    Comments                317
+    Volume (V)              8692
+    Difficulty (D)          43.7
+    Effort to implement (E) 379747
+    Time to implement (T)   5 hours, 52 minutes
+    Est Delivered Bugs (B)  2
+    Cyclomatic Complexity   20
+    Maintainability (MI)    104
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     4  0  
+00004-07FFE  1178  31586  
+
+
+

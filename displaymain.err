@@ -1,0 +1,13 @@
+Compiling C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain on 22-nov.-24 at 11:03
+>>> Warning 240 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain.c" Line 768(21,37): Pointer types do not match
+>>> Warning 240 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain.c" Line 768(38,54): Pointer types do not match
+>>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain.c" Line 16(7,24): Variable never used:   last_ship_angle_1
+>>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain.c" Line 17(7,19): Variable never used:   ship_angle_1
+>>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain.c" Line 25(7,24): Variable never used:   last_ship_angle_2
+>>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain.c" Line 26(7,19): Variable never used:   ship_angle_2
+>>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain.c" Line 110(6,15): Variable never used:   mode_inic
+>>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain.c" Line 112(6,11): Variable never used:   flagg
+>>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\displaymain.c" Line 113(6,14): Variable never used:   flag_rec
+      Memory usage:   ROM=53%      RAM=30% - 33%
+      0 Errors,  9 Warnings.
+Build Successful.

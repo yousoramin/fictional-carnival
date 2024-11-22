@@ -1,0 +1,107 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+005     MAIN.i
+006     MAIN.i
+007     glcd_line.x1
+007     glcd_init.mode
+007     MAIN.@SCRATCH1
+008     glcd_fillScreen.color
+008     @delay_ms1.P1
+008     glcd_line.y1
+009     glcd_line.x2
+009     glcd_fillScreen.i
+00A     glcd_fillScreen.j
+00A     glcd_line.y2
+00B     glcd_line.color
+00B     glcd_fillScreen.@SCRATCH1
+00C     glcd_line.x
+00D     glcd_line.y
+00E     glcd_line.addx
+00F     glcd_line.addy
+010     glcd_line.dx
+011     glcd_line.dy
+012-013 glcd_line.P
+014     glcd_line.i
+015     glcd_pixel.x
+015     glcd_line.@SCRATCH1
+016     @MUL88.P1
+016     glcd_pixel.y
+017     @MUL88.P1
+017     glcd_pixel.color
+018     glcd_pixel.data
+019.0   glcd_pixel.side
+01A     glcd_pixel.@SCRATCH1
+01B     glcd_readByte.side
+01B     glcd_pixel.@SCRATCH2
+01C     glcd_writeByte.side
+01C     glcd_readByte.data
+01D     glcd_writeByte.data
+F83     PSP_DATA
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2
+FBB     CCP_2_LOW
+FBC     CCP_2_HIGH
+FBE     CCP_1_LOW
+FBE     CCP_1
+FBF     CCP_1_HIGH
+FE1-FE2 @WRITE_PACKED_MEMORY.P1
+FE1-FE2 @READ_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PACKED_MEMORY.P1
+FE9-FEA @READ_PACKED_MEMORY.P2
+FE9-FEA @READ_PROGRAM_MEMORY.P3
+FE9-FEA @WRITE_PROGRAM_MEMORY.P4
+FF6-FF8 @READ_PROGRAM_MEMORY.P1
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+000004  glcd_writeByte
+00004A  glcd_fillScreen
+0000B4  glcd_init
+000130  @MUL88
+00017A  glcd_readByte
+0001B8  glcd_pixel
+00028C  glcd_line
+000400  @delay_ms1
+000426  MAIN
+000426  @cinit1
+000436  @cinit2
+
+Project Directory:
+    C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\
+
+Project Files:
+    tetsts.c                                                [22-nov.-24 05:13  CRC=20D13631]
+    ..\..\..\..\..\..\..\Program Files (x86)\PICC\Devices\18F4550.h [21-oct.-22 11:08  CRC=5418AFD6]
+    ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\HDM64GS12.c [01-may.-20 09:52  CRC=92FD3D30]
+
+Source signature=9AE46067
+Program memory checksum=0000
+Hex file CRC=69DA
+
+Units:
+    C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\tetsts (main)
+
+Compiler Settings:
+    Processor:      PIC18F4550
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:   CCS5
+
+Output Files:
+    XREF file:   tetsts.xsym
+    Errors:      tetsts.err
+    Ext Symbols: tetsts.esym
+    INHX32:      tetsts.hex
+    Symbols:     tetsts.sym
+    List:        tetsts.lst
+    Debug/COFF:  tetsts.cof
+    Project:     tetsts.ccspjt
+    Call Tree:   tetsts.tre
+    Statistics:  tetsts.STA

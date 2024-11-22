@@ -1,0 +1,8 @@
+ÀÄcontrolmain
+   ÃÄMAIN  0/284  Ram=2
+   ³  ÃÄ@cinit1  (Inline)  Ram=0
+   ³  ÃÄ@cinit2  (Inline)  Ram=0
+   ³  ÃÄ@delay_ms1  0/40  Ram=1
+   ³  ÃÄget_inputs_1  0/156  Ram=0
+   ³  ÀÄget_inputs_2  0/156  Ram=0
+   ÀÄrcv_data  0/20  Ram=0

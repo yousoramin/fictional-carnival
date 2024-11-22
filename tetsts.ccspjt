@@ -1,0 +1,64 @@
+[PROJECT]
+Target=tetsts.hex
+Processor_Text=PIC18F4550
+CCSVersion=5.112
+Compiler=PCH
+[Target Data]
+FileList=tetsts.c
+[tetsts.c]
+Type=4
+[mru-list]
+1=tetsts.c
+
+[defines]
+buildcount=12
+
+[Opened Files]
+1=controlmain.c
+t1=69
+2=..\halls\videogame.c
+t2=475
+3=..\..\..\..\..\..\..\Program Files (x86)\PICC\Devices\18F4550.h
+t3=549
+4=..\..\S3_Programación Avanzada\rs232 clase\codigoRS232PruebaEnClase.c
+t4=13
+5=displaymain.c
+t5=13
+6=..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\HDM64GS12.c
+t6=13
+7=..\halls\levels.h
+t7=1
+8=..\halls\setup.h
+t8=112
+9=setup_disp.h
+t9=99
+10=tetsts.c
+t10=1
+11=..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\glcd.c
+t11=1
+Count=11
+
+[ProjectLog]
+Days=1
+D1=22-11-2024
+D1_L=10
+D1_L1=[18418]Stopped Editing.
+D1_L2=[18589]Started Editing.
+D1_L3=[18754]Stopped Editing.
+TotalEdit=10
+TotalDebug=0
+D1_E=10
+D1_D=0
+D1_L4=[18781]Started Editing.
+D1_L5=[19084]Stopped Editing.
+D1_L6=[19545]Started Editing.
+D1_L7=[19845]Stopped Editing.
+D1_L8=[20093]Started Editing.
+D1_L9=[20220]Stopped Editing.
+D1_L10=[20221]Project Closed.
+
+[fileformats]
+forcecoff=0
+[Units]
+Count=1
+1=tetsts (main)

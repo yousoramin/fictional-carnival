@@ -1,0 +1,14 @@
+Compiling C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\controlmain on 22-nov.-24 at 03:37
+>>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\controlmain.c" Line 41(14,19): Variable never used:   level
+>>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\controlmain.c" Line 42(14,24): Variable never used:   best_level
+>>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\controlmain.c" Line 43(6,15): Variable never used:   new_level
+>>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\controlmain.c" Line 44(16,21): Variable never used:   score
+>>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\controlmain.c" Line 45(16,26): Variable never used:   best_score
+>>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\controlmain.c" Line 46(16,26): Variable never used:   last_score
+>>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\controlmain.c" Line 47(14,24): Variable never used:   last_level
+>>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\controlmain.c" Line 51(6,10): Variable never used:   mode
+>>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\controlmain.c" Line 52(6,15): Variable never used:   last_mode
+>>> Warning 202 "C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\controlmain.c" Line 62(8,19): Variable never used:   menu_button
+      Memory usage:   ROM=3%      RAM=2% - 3%
+      0 Errors,  10 Warnings.
+Build Successful.

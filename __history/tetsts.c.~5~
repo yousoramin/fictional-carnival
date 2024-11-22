@@ -1,0 +1,17 @@
+#include <18F4550.h>
+
+#fuses NOLVP, NOPROTECT, NOMCLR, NOWDT
+#use delay(clock = 20M, crystal = 20M)
+
+#include <glcd.c>
+
+
+void main(){
+   glcd_init(1);
+   glcd_rect(1,20,30,60,0,1);
+   while(1){
+   
+      
+   
+   }
+}

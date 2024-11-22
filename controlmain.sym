@@ -1,0 +1,127 @@
+000     @SCRATCH
+000     @MEMSET.P1
+001     @SCRATCH
+001     _RETURN_
+001-002 @MEMSET.P1
+002     @SCRATCH
+003     @SCRATCH
+004     @INTERRUPT_AREA
+005     @INTERRUPT_AREA
+006     @INTERRUPT_AREA
+007     @INTERRUPT_AREA
+008     @INTERRUPT_AREA
+009     @INTERRUPT_AREA
+00A     @INTERRUPT_AREA
+00B     @INTERRUPT_AREA
+00C     @INTERRUPT_AREA
+00D     @INTERRUPT_AREA
+00E     @INTERRUPT_AREA
+00F     @INTERRUPT_AREA
+010     @INTERRUPT_AREA
+011     @INTERRUPT_AREA
+012     @INTERRUPT_AREA
+013     @INTERRUPT_AREA
+014     @INTERRUPT_AREA
+015     @INTERRUPT_AREA
+016     @INTERRUPT_AREA
+017     @INTERRUPT_AREA
+018     @INTERRUPT_AREA
+019-01A __DYNAMIC_HEAD
+01B     dataRS232
+01C.0   flagg
+01C.1   p1_L
+01C.2   p1_R
+01C.3   p2_L
+01C.4   p2_R
+01C.5   new_level
+01D     p1_pot_x
+01E     p1_pot_y
+01F     p1_pot_xx
+020     p1_pot_yy
+021     p2_pot_x
+022     p2_pot_y
+023     p2_pot_xx
+024     p2_pot_yy
+025     level
+026     best_level
+027-028 score
+029-02A best_score
+02B-02C last_score
+02D     last_level
+02E     buttons
+02F     mode
+030     last_mode
+031     MAIN.menu_button
+031-034 atan2.y
+032     MAIN.@SCRATCH1
+033     @delay_ms1.P1
+035-038 atan2.x
+039-03C atan2.z
+03D.0   atan2.sign
+03E     atan2.quad
+F83     PSP_DATA
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2_LOW
+FBB     CCP_2
+FBC     CCP_2_HIGH
+FBE     CCP_1
+FBE     CCP_1_LOW
+FBF     CCP_1_HIGH
+FE1-FE2 @READ_PACKED_MEMORY.P1
+FE1-FE2 @WRITE_PACKED_MEMORY.P2
+FE9-FEA @READ_PACKED_MEMORY.P1
+FE9-FEA @WRITE_PROGRAM_MEMORY.P2
+FE9-FEA @READ_PROGRAM_MEMORY.P3
+FE9-FEA @WRITE_PACKED_MEMORY.P4
+FE9-FEA @MEMSET.P5
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P1
+FF6-FF8 @READ_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+0000AE  rcv_data
+0000C2  @delay_ms1
+0000EA  get_inputs_1
+000186  get_inputs_2
+000222  @cinit1
+000222  MAIN
+000294  @cinit2
+
+Project Directory:
+    C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\
+
+Project Files:
+    controlmain.c                                           [22-nov.-24 03:37  CRC=E0F5CEA3]
+    ..\..\..\..\..\..\..\Program Files (x86)\PICC\Devices\18F4550.h [21-oct.-22 11:08  CRC=5418AFD6]
+    ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\math.h [05-may.-20 13:57  CRC=02232397]
+    ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stdlibm.h [01-abr.-19 11:36  CRC=8206F698]
+    ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stddef.h [30-ene.-19 12:26  CRC=897CEC6C]
+    ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\memmgmt.c [24-feb.-12 11:47  CRC=E82E24A3]
+
+Source signature=1311CE5A
+Program memory checksum=0000
+Hex file CRC=A139
+
+Units:
+    C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\controlmain (main)
+
+Compiler Settings:
+    Processor:      PIC18F4550
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:   CCS5
+
+Output Files:
+    XREF file:   controlmain.xsym
+    Errors:      controlmain.err
+    Ext Symbols: controlmain.esym
+    INHX32:      controlmain.hex
+    Symbols:     controlmain.sym
+    List:        controlmain.lst
+    Debug/COFF:  controlmain.cof
+    Project:     controlmain.ccspjt
+    Call Tree:   controlmain.tre
+    Statistics:  controlmain.STA

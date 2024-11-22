@@ -1,0 +1,1126 @@
+CCS PCH C Compiler, Version 5.112, 5967               22-nov.-24 05:36
+
+               Filename:   C:\Users\Kevin\Desktop\UAQ Auto\Tareas y Trabajos\S4_Microsistemas\videoujuego online\tetsts.lst
+
+               ROM used:   1182 bytes (4%)
+                           Largest free fragment is 31586
+               RAM used:   7 (0%) at main() level
+                           29 (1%) worst case
+               Stack used: 3 locations
+               Stack size: 31
+
+*
+0000:  GOTO   0426
+.................... #include <18F4550.h>
+.................... //////////// Standard Header file for the PIC18F4550 device ////////////////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... ////        (C) Copyright 1996, 2020 Custom Computer Services          ////
+.................... //// This source code may only be used by licensed users of the CCS C  ////
+.................... //// compiler.  This source code may only be distributed to other      ////
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction ////
+.................... //// or distribution is permitted without written permission.          ////
+.................... //// Derivative programs created using this software in object code    ////
+.................... //// form are not restricted in any way.                               ////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... #device PIC18F4550
+*
+0130:  CLRF   00
+0132:  CLRF   01
+0134:  MOVF   16,W
+0136:  BCF    FD8.0
+0138:  BTFSC  17.0
+013A:  ADDWF  00,F
+013C:  RRCF   00,F
+013E:  RRCF   01,F
+0140:  BTFSC  17.1
+0142:  ADDWF  00,F
+0144:  RRCF   00,F
+0146:  RRCF   01,F
+0148:  BTFSC  17.2
+014A:  ADDWF  00,F
+014C:  RRCF   00,F
+014E:  RRCF   01,F
+0150:  BTFSC  17.3
+0152:  ADDWF  00,F
+0154:  RRCF   00,F
+0156:  RRCF   01,F
+0158:  BTFSC  17.4
+015A:  ADDWF  00,F
+015C:  RRCF   00,F
+015E:  RRCF   01,F
+0160:  BTFSC  17.5
+0162:  ADDWF  00,F
+0164:  RRCF   00,F
+0166:  RRCF   01,F
+0168:  BTFSC  17.6
+016A:  ADDWF  00,F
+016C:  RRCF   00,F
+016E:  RRCF   01,F
+0170:  BTFSC  17.7
+0172:  ADDWF  00,F
+0174:  RRCF   00,F
+0176:  RRCF   01,F
+0178:  RETURN 0
+.................... 
+.................... #list
+.................... 
+.................... 
+.................... #fuses NOLVP, NOPROTECT, NOMCLR, NOWDT
+.................... #use delay(clock = 20M, crystal = 20M)
+*
+0400:  CLRF   FEA
+0402:  MOVLW  08
+0404:  MOVWF  FE9
+0406:  MOVF   FEF,W
+0408:  BZ    0424
+040A:  MOVLW  06
+040C:  MOVWF  01
+040E:  CLRF   00
+0410:  DECFSZ 00,F
+0412:  BRA    0410
+0414:  DECFSZ 01,F
+0416:  BRA    040E
+0418:  MOVLW  7B
+041A:  MOVWF  00
+041C:  DECFSZ 00,F
+041E:  BRA    041C
+0420:  DECFSZ FEF,F
+0422:  BRA    040A
+0424:  RETURN 0
+.................... 
+.................... #include <HDM64GS12.c>
+.................... /////////////////////////////////////////////////////////////////////////
+.................... ////                           HDM64GS12.c                           ////
+.................... ////                                                                 ////
+.................... //// This file contains drivers for using a Hantronix HDM64GS12 with ////
+.................... //// a KS0108 display controller. The HDM64GS12 is 128 by 64 pixels. ////
+.................... //// The driver treats the upper left pixel as (0,0).                ////
+.................... ////                                                                 ////
+.................... //// Use #define FAST_GLCD if the target chip has at least 1k of RAM ////
+.................... //// to decrease the time it takes to update the display.            ////
+.................... //// glcd_update() must then be called to update the display after   ////
+.................... //// changing the pixel information.                                 ////
+.................... //// See ex_glcd.c for suggested usage.                              ////
+.................... //// See KS0108.c for controlling a single 64 by 64 display          ////
+.................... /////////////////////////////////////////////////////////////////////////
+.................... ////                                                                 ////
+.................... //// LCD Pin connections:                                            ////
+.................... //// (These can be changed as needed in the following defines).      ////
+.................... ////  * 1: VSS is connected to GND                                   ////
+.................... ////  * 2: VDD is connected to +5V                                   ////
+.................... ////  * 3: V0  - LCD operating voltage (Contrast adjustment)         ////
+.................... ////  * 4: D/I - Data or Instruction is connected to B2              ////
+.................... ////  * 5: R/W - Read or Write is connected to B4                    ////
+.................... ////  * 6: Enable is connected to B5                                 ////
+.................... ////  *7-14: Data Bus 0 to 7 is connected to port d                  ////
+.................... ////  *15: Chip Select 1 is connected to B0                          ////
+.................... ////  *16: Chip Select 2 is connected to B1                          ////
+.................... ////  *17: Reset is connected to C0                                  ////
+.................... ////  *18: Negative voltage is also connected to the 20k Ohm POT     ////
+.................... ////  *19: Positive voltage for LED backlight is connected to +5V    ////
+.................... ////  *20: Negative voltage for LED backlight is connected to GND    ////
+.................... ////                                                                 ////
+.................... /////////////////////////////////////////////////////////////////////////
+.................... ////                                                                 ////
+.................... ////  glcd_init(mode)                                                ////
+.................... ////     * Must be called before any other function.                 ////
+.................... ////       - mode can be ON or OFF to turn the LCD on or off         ////
+.................... ////                                                                 ////
+.................... ////  glcd_pixel(x,y,color)                                          ////
+.................... ////     * Sets the pixel to the given color.                        ////
+.................... ////       - color can be ON or OFF                                  ////
+.................... ////                                                                 ////
+.................... ////  glcd_fillScreen(color)                                         ////
+.................... ////     * Fills the entire LCD with the given color.                ////
+.................... ////       - color can be ON or OFF                                  ////
+.................... ////                                                                 ////
+.................... ////  glcd_update()                                                  ////
+.................... ////     * Write the display data stored in RAM to the LCD           ////
+.................... ////     * Only available if FAST_GLCD is defined                    ////
+.................... ////                                                                 ////
+.................... /////////////////////////////////////////////////////////////////////////
+.................... ////  Version History                                                ////
+.................... ////                                                                 ////
+.................... ////  05/01/20 - Added defines to selecting the data bus port or     ////
+.................... ////             pins used with this driver.                         ////
+.................... ////                                                                 ////
+.................... ////             GLCD_PORT - to assign the port to use for the GLCD  ////
+.................... ////                 data bus pins, for example:                     ////
+.................... ////                    #define GLCD_PORT    c                       ////
+.................... ////                                                                 ////
+.................... ////                 The above assigns it to use PORTC for the data  ////
+.................... ////                 bus pins.  Driver defaults to PORTD if          ////
+.................... ////                 GLCD_PORT and GLCD_DATA0 are not defined before ////
+.................... ////                 this driver is included in project.             ////
+.................... ////                                                                 ////
+.................... ////             GLCD_DATA0 - to assign the data bus 0 pin.          ////
+.................... ////                                                                 ////
+.................... ////             GLCD_DATA1 - to assign the data bus 1 pin.          ////
+.................... ////                                                                 ////
+.................... ////             GLCD_DATA2 - to assign the data bus 2 pin.          ////
+.................... ////                                                                 ////
+.................... ////             GLCD_DATA3 - to assign the data bus 3 pin.          ////
+.................... ////                                                                 ////
+.................... ////             GLCD_DATA4 - to assign the data bus 4 pin.          ////
+.................... ////                                                                 ////
+.................... ////             GLCD_DATA5 - to assign the data bus 5 pin.          ////
+.................... ////                                                                 ////
+.................... ////             GLCD_DATA6 - to assign the data bus 6 pin.          ////
+.................... ////                                                                 ////
+.................... ////             GLCD_DATA7 - to assign the data bus 7 pin.          ////
+.................... ////                                                                 ////
+.................... ////     The defines GLCD_DATA0 to GLCD_DATA7 can only be used to    ////
+.................... ////     assign the pins if GLCD_PORT is not defined.  All eight     ////
+.................... ////     defines must be defined before this driver is included in   ////
+.................... ////     project to make assignments.  No default defines are made   ////
+.................... ////     for GLCD_DATA0 to GLCD_DATA7.                               ////
+.................... ////                                                                 ////
+.................... /////////////////////////////////////////////////////////////////////////
+.................... ////        (C) Copyright 1996, 2020 Custom Computer Services        ////
+.................... //// This source code may only be used by licensed users of the CCS  ////
+.................... //// C compiler.  This source code may only be distributed to other  ////
+.................... //// licensed users of the CCS C compiler.  No other use,            ////
+.................... //// reproduction or distribution is permitted without written       ////
+.................... //// permission.  Derivative programs created using this software    ////
+.................... //// in object code form are not restricted in any way.              ////
+.................... /////////////////////////////////////////////////////////////////////////
+.................... 
+.................... #ifndef HDM64GS12
+.................... #define HDM64GS12
+.................... 
+.................... #ifndef concat
+....................  #define concat(x,y)    x####y
+.................... #endif
+.................... 
+.................... #ifndef GLCD_WIDTH
+....................  #define GLCD_WIDTH     128
+.................... #endif
+.................... 
+.................... #ifndef GLCD_CS1
+....................  #define GLCD_CS1       PIN_B0   // Chip Selection 1
+.................... #endif
+.................... 
+.................... #ifndef GLCD_CS2
+....................  #define GLCD_CS2       PIN_B1   // Chip Selection 2
+.................... #endif
+.................... 
+.................... #ifndef GLCD_DI
+....................  #define GLCD_DI        PIN_B2   // Data or Instruction input
+.................... #endif
+.................... 
+.................... #ifndef GLCD_RW
+....................  #define GLCD_RW        PIN_B4   // Read/Write
+.................... #endif
+.................... 
+.................... #ifndef GLCD_E
+....................  #define GLCD_E         PIN_B5   // Enable
+.................... #endif
+.................... 
+.................... #ifndef GLCD_RST
+....................  #define GLCD_RST       PIN_C0   // Reset
+.................... #endif
+.................... 
+.................... #if !defined(GLCD_PORT) && !defined(GLCD_DATA0)
+....................  #define GLCD_PORT      d
+.................... #elif !defined(GLCD_PORT) && defined(GLCD_DATA0)
+....................  #if !defined(GLCD_DATA1) || !defined(GLCD_DATA2) || !defined(GLCD_DATA3) || !defined(GLCD_DATA4) || \
+....................      !defined(GLCD_DATA5) || !defined(GLCD_DATA6) || !defined(GLCD_DATA7)
+....................   #error not all GLCD Data pins defined.
+....................  #endif
+.................... #endif
+.................... 
+.................... #define GLCD_LEFT       0
+.................... #define GLCD_RIGHT      1
+.................... 
+.................... #ifndef ON
+....................  #define ON             1
+.................... #endif
+.................... 
+.................... #ifndef OFF
+....................  #define OFF            0
+.................... #endif
+.................... 
+.................... /////////////////////////////////////////////////////////////////////////
+.................... // Function Prototypes
+.................... /////////////////////////////////////////////////////////////////////////
+.................... void glcd_init(int1 mode);
+.................... void glcd_pixel(unsigned int8 x, unsigned int8 y, int1 color);
+.................... void glcd_fillScreen(int1 color);
+.................... void glcd_writeByte(int1 side, BYTE data);
+.................... BYTE glcd_readByte(int1 side);
+.................... void glcd_update();
+.................... /////////////////////////////////////////////////////////////////////////
+.................... 
+.................... #if defined(GLCD_PORT)
+....................  #define WritePort(v)   concat(output_, GLCD_PORT(v))
+....................  #define ReadPort()     concat(input_, GLCD_PORT())
+....................  #define TrisPort(v)    concat(set_tris_, GLCD_PORT(v))
+.................... #else
+....................  #define TrisPort(v)
+.................... 
+....................  void WritePort(unsigned int8 value)
+....................  {
+....................    output_bit(GLCD_DATA0, bit_test(value, 0));
+....................    output_bit(GLCD_DATA1, bit_test(value, 1));
+....................    output_bit(GLCD_DATA2, bit_test(value, 2));
+....................    output_bit(GLCD_DATA3, bit_test(value, 3));
+....................    output_bit(GLCD_DATA4, bit_test(value, 4));
+....................    output_bit(GLCD_DATA5, bit_test(value, 5));
+....................    output_bit(GLCD_DATA6, bit_test(value, 6));
+....................    output_bit(GLCD_DATA7, bit_test(value, 7));
+....................  }
+....................  
+....................  unsigned int8 ReadPort(void)
+....................  {
+....................    union
+....................    {
+....................       unsigned int8 b;
+....................       int1 bit[8];
+....................    } Result;
+....................    
+....................    Result.bit[0] = input(GLCD_DATA0);
+....................    Result.bit[1] = input(GLCD_DATA1);
+....................    Result.bit[2] = input(GLCD_DATA2);
+....................    Result.bit[3] = input(GLCD_DATA3);
+....................    Result.bit[4] = input(GLCD_DATA4);
+....................    Result.bit[5] = input(GLCD_DATA5);
+....................    Result.bit[6] = input(GLCD_DATA6);
+....................    Result.bit[7] = input(GLCD_DATA7);
+....................    
+....................    return(Result.b);
+....................  } 
+.................... #endif
+.................... 
+.................... #ifdef FAST_GLCD
+.................... struct
+.................... {
+....................    unsigned int8 left[512];
+....................    unsigned int8 right[512];
+.................... } displayData;
+.................... #endif
+.................... 
+.................... 
+.................... // Purpose:       Initialize the LCD.
+.................... //                Call before using any other LCD function.
+.................... // Inputs:        OFF - Turns the LCD off
+.................... //                ON  - Turns the LCD on
+.................... void glcd_init(int1 mode)
+.................... {
+....................    // Initialize some pins
+....................    output_high(GLCD_RST);
+*
+00B4:  BCF    F94.0
+00B6:  BSF    F8B.0
+....................    output_low(GLCD_E);
+00B8:  BCF    F93.5
+00BA:  BCF    F8A.5
+....................    output_low(GLCD_CS1);
+00BC:  BCF    F93.0
+00BE:  BCF    F8A.0
+....................    output_low(GLCD_CS2);
+00C0:  BCF    F93.1
+00C2:  BCF    F8A.1
+.................... 
+....................    output_low(GLCD_DI);                 // Set for instruction
+00C4:  BCF    F93.2
+00C6:  BCF    F8A.2
+....................    glcd_writeByte(GLCD_LEFT,  0xC0);    // Specify first RAM line at the top
+00C8:  CLRF   1C
+00CA:  MOVLW  C0
+00CC:  MOVWF  1D
+00CE:  RCALL  0004
+....................    glcd_writeByte(GLCD_RIGHT, 0xC0);    //   of the screen
+00D0:  MOVLW  01
+00D2:  MOVWF  1C
+00D4:  MOVLW  C0
+00D6:  MOVWF  1D
+00D8:  RCALL  0004
+....................    glcd_writeByte(GLCD_LEFT,  0x40);    // Set the column address to 0
+00DA:  CLRF   1C
+00DC:  MOVLW  40
+00DE:  MOVWF  1D
+00E0:  RCALL  0004
+....................    glcd_writeByte(GLCD_RIGHT, 0x40);
+00E2:  MOVLW  01
+00E4:  MOVWF  1C
+00E6:  MOVLW  40
+00E8:  MOVWF  1D
+00EA:  RCALL  0004
+....................    glcd_writeByte(GLCD_LEFT,  0xB8);    // Set the page address to 0
+00EC:  CLRF   1C
+00EE:  MOVLW  B8
+00F0:  MOVWF  1D
+00F2:  RCALL  0004
+....................    glcd_writeByte(GLCD_RIGHT, 0xB8);
+00F4:  MOVLW  01
+00F6:  MOVWF  1C
+00F8:  MOVLW  B8
+00FA:  MOVWF  1D
+00FC:  RCALL  0004
+.................... 
+....................    if(mode == ON)
+00FE:  DECFSZ 07,W
+0100:  BRA    0116
+....................    {
+....................       glcd_writeByte(GLCD_LEFT,  0x3F); // Turn the display on
+0102:  CLRF   1C
+0104:  MOVLW  3F
+0106:  MOVWF  1D
+0108:  RCALL  0004
+....................       glcd_writeByte(GLCD_RIGHT, 0x3F);
+010A:  MOVLW  01
+010C:  MOVWF  1C
+010E:  MOVLW  3F
+0110:  MOVWF  1D
+0112:  RCALL  0004
+....................    }
+0114:  BRA    0128
+....................    else
+....................    {
+....................       glcd_writeByte(GLCD_LEFT,  0x3E); // Turn the display off
+0116:  CLRF   1C
+0118:  MOVLW  3E
+011A:  MOVWF  1D
+011C:  RCALL  0004
+....................       glcd_writeByte(GLCD_RIGHT, 0x3E);
+011E:  MOVLW  01
+0120:  MOVWF  1C
+0122:  MOVLW  3E
+0124:  MOVWF  1D
+0126:  RCALL  0004
+....................    }
+.................... 
+....................    glcd_fillScreen(OFF);                // Clear the display
+0128:  CLRF   08
+012A:  RCALL  004A
+.................... 
+....................    #ifdef FAST_GLCD
+012C:  GOTO   043C (RETURN)
+....................    glcd_update();
+....................    #endif
+.................... }
+.................... 
+.................... 
+.................... // Purpose:    Update the LCD with data from the display arrays
+.................... #ifdef FAST_GLCD
+.................... void glcd_update()
+.................... {
+....................    unsigned int8 i, j;
+....................    unsigned int8 *p1, *p2;
+.................... 
+....................    p1 = displayData.left;
+....................    p2 = displayData.right;
+.................... 
+....................    // Loop through the vertical pages
+....................    for(i = 0; i < 8; ++i)
+....................    {
+....................       output_low(GLCD_DI);                      // Set for instruction
+....................       glcd_writeByte(GLCD_LEFT, 0x40);          // Set horizontal address to 0
+....................       glcd_writeByte(GLCD_RIGHT, 0x40);
+....................       glcd_writeByte(GLCD_LEFT, i | 0xB8);      // Set page address
+....................       glcd_writeByte(GLCD_RIGHT, i | 0xB8);
+....................       output_high(GLCD_DI);                     // Set for data
+.................... 
+....................       // Loop through the horizontal sections
+....................       for(j = 0; j < 64; ++j)
+....................       {
+....................          glcd_writeByte(GLCD_LEFT, *p1++);      // Turn pixels on or off
+....................          glcd_writeByte(GLCD_RIGHT, *p2++);     // Turn pixels on or off
+....................       }
+....................    }
+.................... }
+.................... #endif
+.................... 
+.................... 
+.................... // Purpose:    Turn a pixel on a graphic LCD on or off
+.................... // Inputs:     1) x - the x coordinate of the pixel
+.................... //             2) y - the y coordinate of the pixel
+.................... //             3) color - ON or OFF
+.................... void glcd_pixel(unsigned int8 x, unsigned int8 y, int1 color)
+.................... #ifdef FAST_GLCD
+*
+01B8:  BCF    19.0
+.................... {
+....................    unsigned int8* p;
+....................    unsigned int16 temp;
+....................    temp =  y/8;
+....................    temp *= 64;
+....................    temp += x;
+.................... 
+....................    if(x > 63)
+....................    {
+....................       p = displayData.right + temp - 64;
+....................    }
+....................    else
+....................    {
+....................       p = displayData.left + temp;
+....................    }
+.................... 
+....................    if(color)
+....................    {
+....................       bit_set(*p, y%8);
+....................    }
+....................    else
+....................    {
+....................       bit_clear(*p, y%8);
+....................    }
+.................... }
+.................... #else
+.................... {
+....................    BYTE data;
+....................    int1 side = GLCD_LEFT;  // Stores which chip to use on the LCD
+.................... 
+....................    if(x > 63)              // Check for first or second display area
+01BA:  MOVF   15,W
+01BC:  SUBLW  3F
+01BE:  BC    01C6
+....................    {
+....................       x -= 64;
+01C0:  MOVLW  40
+01C2:  SUBWF  15,F
+....................       side = GLCD_RIGHT;
+01C4:  BSF    19.0
+....................    }
+.................... 
+....................    output_low(GLCD_DI);                         // Set for instruction
+01C6:  BCF    F93.2
+01C8:  BCF    F8A.2
+....................    bit_clear(x,7);                              // Clear the MSB. Part of an instruction code
+01CA:  BCF    15.7
+....................    bit_set(x,6);                                // Set bit 6. Also part of an instruction code
+01CC:  BSF    15.6
+....................    glcd_writeByte(side, x);                     // Set the horizontal address
+01CE:  MOVLW  00
+01D0:  BTFSC  19.0
+01D2:  MOVLW  01
+01D4:  MOVWF  1A
+01D6:  MOVWF  1C
+01D8:  MOVFF  15,1D
+01DC:  RCALL  0004
+....................    glcd_writeByte(side, (y/8 & 0xBF) | 0xB8);   // Set the vertical page address
+01DE:  MOVLW  00
+01E0:  BTFSC  19.0
+01E2:  MOVLW  01
+01E4:  MOVWF  1A
+01E6:  RRCF   16,W
+01E8:  MOVWF  00
+01EA:  RRCF   00,F
+01EC:  RRCF   00,F
+01EE:  MOVLW  1F
+01F0:  ANDWF  00,F
+01F2:  MOVF   00,W
+01F4:  ANDLW  BF
+01F6:  IORLW  B8
+01F8:  MOVWF  1B
+01FA:  MOVFF  1A,1C
+01FE:  MOVWF  1D
+0200:  RCALL  0004
+....................    output_high(GLCD_DI);                        // Set for data
+0202:  BCF    F93.2
+0204:  BSF    F8A.2
+....................    glcd_readByte(side);                         // Need two reads to get data
+0206:  MOVLW  00
+0208:  BTFSC  19.0
+020A:  MOVLW  01
+020C:  MOVWF  1A
+020E:  MOVWF  1B
+0210:  RCALL  017A
+....................    data = glcd_readByte(side);                  //  at new address
+0212:  MOVLW  00
+0214:  BTFSC  19.0
+0216:  MOVLW  01
+0218:  MOVWF  1A
+021A:  MOVWF  1B
+021C:  RCALL  017A
+021E:  MOVFF  01,18
+.................... 
+....................    if(color == ON)
+0222:  DECFSZ 17,W
+0224:  BRA    0244
+....................       bit_set(data, y%8);        // Turn the pixel on
+0226:  MOVF   16,W
+0228:  ANDLW  07
+022A:  MOVWF  1A
+022C:  MOVLW  01
+022E:  MOVWF  00
+0230:  MOVF   1A,W
+0232:  MOVWF  01
+0234:  BZ    023E
+0236:  BCF    FD8.0
+0238:  RLCF   00,F
+023A:  DECFSZ 01,F
+023C:  BRA    0236
+023E:  MOVF   00,W
+0240:  IORWF  18,F
+0242:  BRA    0262
+....................    else                          // or
+....................       bit_clear(data, y%8);      // turn the pixel off
+0244:  MOVF   16,W
+0246:  ANDLW  07
+0248:  MOVWF  1A
+024A:  MOVLW  01
+024C:  MOVWF  00
+024E:  MOVF   1A,W
+0250:  MOVWF  01
+0252:  BZ    025C
+0254:  BCF    FD8.0
+0256:  RLCF   00,F
+0258:  DECFSZ 01,F
+025A:  BRA    0254
+025C:  MOVF   00,W
+025E:  XORLW  FF
+0260:  ANDWF  18,F
+.................... 
+....................    output_low(GLCD_DI);          // Set for instruction
+0262:  BCF    F93.2
+0264:  BCF    F8A.2
+....................    glcd_writeByte(side, x);      // Set the horizontal address
+0266:  MOVLW  00
+0268:  BTFSC  19.0
+026A:  MOVLW  01
+026C:  MOVWF  1A
+026E:  MOVWF  1C
+0270:  MOVFF  15,1D
+0274:  RCALL  0004
+....................    output_high(GLCD_DI);         // Set for data
+0276:  BCF    F93.2
+0278:  BSF    F8A.2
+....................    glcd_writeByte(side, data);   // Write the pixel data
+027A:  MOVLW  00
+027C:  BTFSC  19.0
+027E:  MOVLW  01
+0280:  MOVWF  1A
+0282:  MOVWF  1C
+0284:  MOVFF  18,1D
+0288:  RCALL  0004
+028A:  RETURN 0
+.................... }
+.................... #endif
+.................... 
+.................... 
+.................... // Purpose:    Fill the LCD screen with the passed in color
+.................... // Inputs:     ON  - turn all the pixels on
+.................... //             OFF - turn all the pixels off
+.................... void glcd_fillScreen(int1 color)
+.................... #ifdef FAST_GLCD
+.................... {
+....................    unsigned int8  data;
+....................    unsigned int8  *p1, *p2;
+....................    unsigned int16 i;
+.................... 
+....................    p1 = displayData.left;
+....................    p2 = displayData.right;
+....................    data = 0xFF * color;
+.................... 
+....................    for(i=0; i<512; ++i)
+....................    {
+....................       *p1++ = data;
+....................       *p2++ = data;
+....................    }
+.................... }
+.................... #else
+.................... {
+....................    unsigned int8 i, j;
+.................... 
+....................    // Loop through the vertical pages
+....................    for(i = 0; i < 8; ++i)
+*
+004A:  CLRF   09
+004C:  MOVF   09,W
+004E:  SUBLW  07
+0050:  BNC   00B2
+....................    {
+....................       output_low(GLCD_DI);                      // Set for instruction
+0052:  BCF    F93.2
+0054:  BCF    F8A.2
+....................       glcd_writeByte(GLCD_LEFT, 0b01000000);    // Set horizontal address to 0
+0056:  CLRF   1C
+0058:  MOVLW  40
+005A:  MOVWF  1D
+005C:  RCALL  0004
+....................       glcd_writeByte(GLCD_RIGHT, 0b01000000);
+005E:  MOVLW  01
+0060:  MOVWF  1C
+0062:  MOVLW  40
+0064:  MOVWF  1D
+0066:  RCALL  0004
+....................       glcd_writeByte(GLCD_LEFT, i | 0b10111000);// Set page address
+0068:  MOVF   09,W
+006A:  IORLW  B8
+006C:  MOVWF  0B
+006E:  CLRF   1C
+0070:  MOVWF  1D
+0072:  RCALL  0004
+....................       glcd_writeByte(GLCD_RIGHT, i | 0b10111000);
+0074:  MOVF   09,W
+0076:  IORLW  B8
+0078:  MOVWF  0B
+007A:  MOVLW  01
+007C:  MOVWF  1C
+007E:  MOVFF  0B,1D
+0082:  RCALL  0004
+....................       output_high(GLCD_DI);                     // Set for data
+0084:  BCF    F93.2
+0086:  BSF    F8A.2
+.................... 
+....................       // Loop through the horizontal sections
+....................       for(j = 0; j < 64; ++j)
+0088:  CLRF   0A
+008A:  MOVF   0A,W
+008C:  SUBLW  3F
+008E:  BNC   00AE
+....................       {
+....................          glcd_writeByte(GLCD_LEFT, 0xFF*color);  // Turn pixels on or off
+0090:  MOVF   08,W
+0092:  MULLW  FF
+0094:  MOVFF  FF3,1D
+0098:  CLRF   1C
+009A:  RCALL  0004
+....................          glcd_writeByte(GLCD_RIGHT, 0xFF*color); // Turn pixels on or off
+009C:  MOVF   08,W
+009E:  MULLW  FF
+00A0:  MOVFF  FF3,1D
+00A4:  MOVLW  01
+00A6:  MOVWF  1C
+00A8:  RCALL  0004
+00AA:  INCF   0A,F
+00AC:  BRA    008A
+....................       }
+00AE:  INCF   09,F
+00B0:  BRA    004C
+....................    }
+00B2:  RETURN 0
+.................... }
+.................... #endif
+.................... 
+.................... 
+.................... // Purpose:    Write a byte of data to the specified chip
+.................... // Inputs:     1) chipSelect - which chip to write the data to
+.................... //             2) data - the byte of data to write
+.................... void glcd_writeByte(int1 side, BYTE data)
+.................... {
+....................    TrisPort(0x00);
+*
+0004:  MOVLW  00
+0006:  MOVWF  F95
+....................    
+....................    output_low(GLCD_RW);       // Set for writing
+0008:  BCF    F93.4
+000A:  BCF    F8A.4
+.................... 
+....................     if(side)                   // Choose which side to write to
+000C:  MOVF   1C,F
+000E:  BTFSC  FD8.2
+0010:  GOTO   001C
+....................       output_high(GLCD_CS2);
+0014:  BCF    F93.1
+0016:  BSF    F8A.1
+0018:  GOTO   0020
+....................    else
+....................       output_high(GLCD_CS1);
+001C:  BCF    F93.0
+001E:  BSF    F8A.0
+.................... 
+....................     delay_us(1);
+0020:  BRA    0022
+0022:  BRA    0024
+0024:  NOP   
+.................... 
+....................    WritePort(data);           // Put the data on the port
+0026:  CLRF   F95
+0028:  MOVFF  1D,F8C
+....................    delay_us(1);
+002C:  BRA    002E
+002E:  BRA    0030
+0030:  NOP   
+....................    output_high(GLCD_E);       // Pulse the enable pin
+0032:  BCF    F93.5
+0034:  BSF    F8A.5
+....................    delay_us(1);
+0036:  BRA    0038
+0038:  BRA    003A
+003A:  NOP   
+....................    output_low(GLCD_E);
+003C:  BCF    F93.5
+003E:  BCF    F8A.5
+.................... 
+....................    output_low(GLCD_CS1);      // Reset the chip select lines
+0040:  BCF    F93.0
+0042:  BCF    F8A.0
+....................    output_low(GLCD_CS2);
+0044:  BCF    F93.1
+0046:  BCF    F8A.1
+0048:  RETURN 0
+.................... }
+.................... 
+.................... 
+.................... // Purpose:    Reads a byte of data from the specified chip
+.................... // Outputs:     A byte of data read from the chip
+.................... BYTE glcd_readByte(int1 side)
+.................... {
+....................    BYTE data;                 // Stores the data read from the LCD
+.................... 
+....................    TrisPort(0xFF);            // Set port to input
+*
+017A:  MOVLW  FF
+017C:  MOVWF  F95
+....................    output_high(GLCD_RW);      // Set for reading
+017E:  BCF    F93.4
+0180:  BSF    F8A.4
+.................... 
+....................    if(side)                   // Choose which side to write to
+0182:  MOVF   1B,F
+0184:  BZ    018C
+....................       output_high(GLCD_CS2);
+0186:  BCF    F93.1
+0188:  BSF    F8A.1
+018A:  BRA    0190
+....................    else
+....................       output_high(GLCD_CS1);
+018C:  BCF    F93.0
+018E:  BSF    F8A.0
+.................... 
+....................    delay_us(1);
+0190:  BRA    0192
+0192:  BRA    0194
+0194:  NOP   
+....................    output_high(GLCD_E);       // Pulse the enable pin
+0196:  BCF    F93.5
+0198:  BSF    F8A.5
+....................    delay_us(1);
+019A:  BRA    019C
+019C:  BRA    019E
+019E:  NOP   
+....................    data = ReadPort();        // Get the data from the display's output register
+01A0:  SETF   F95
+01A2:  MOVFF  F83,1C
+....................    output_low(GLCD_E);
+01A6:  BCF    F93.5
+01A8:  BCF    F8A.5
+.................... 
+....................    output_low(GLCD_CS1);      // Reset the chip select lines
+01AA:  BCF    F93.0
+01AC:  BCF    F8A.0
+....................    output_low(GLCD_CS2);
+01AE:  BCF    F93.1
+01B0:  BCF    F8A.1
+....................    return data;               // Return the read data
+01B2:  MOVFF  1C,01
+01B6:  RETURN 0
+.................... }
+.................... 
+.................... #endif
+.................... 
+.................... 
+.................... void glcd_line(int x1, int y1, int x2, int y2, int1 color){
+....................    signed int  x, y, addx, addy, dx, dy;
+....................    signed long P;
+....................    int i;
+....................    dx = abs((signed int)(x2 - x1));
+*
+028C:  MOVF   07,W
+028E:  SUBWF  09,W
+0290:  MOVWF  15
+0292:  MOVF   15,W
+0294:  BTFSS  15.7
+0296:  BRA    029E
+0298:  MOVLW  00
+029A:  BSF    FD8.0
+029C:  SUBFWB 15,W
+029E:  MOVWF  10
+....................    dy = abs((signed int)(y2 - y1));
+02A0:  MOVF   08,W
+02A2:  SUBWF  0A,W
+02A4:  MOVWF  15
+02A6:  MOVF   15,W
+02A8:  BTFSS  15.7
+02AA:  BRA    02B2
+02AC:  MOVLW  00
+02AE:  BSF    FD8.0
+02B0:  SUBFWB 15,W
+02B2:  MOVWF  11
+....................    x = x1;
+02B4:  MOVFF  07,0C
+....................    y = y1;
+02B8:  MOVFF  08,0D
+.................... 
+....................    if(x1 > x2)
+02BC:  MOVF   07,W
+02BE:  SUBWF  09,W
+02C0:  BC    02C6
+....................       addx = -1;
+02C2:  SETF   0E
+02C4:  BRA    02CA
+....................    else
+....................       addx = 1;
+02C6:  MOVLW  01
+02C8:  MOVWF  0E
+....................    if(y1 > y2)
+02CA:  MOVF   08,W
+02CC:  SUBWF  0A,W
+02CE:  BC    02D4
+....................       addy = -1;
+02D0:  SETF   0F
+02D2:  BRA    02D8
+....................    else
+....................       addy = 1;
+02D4:  MOVLW  01
+02D6:  MOVWF  0F
+.................... 
+....................    if(dx >= dy)
+02D8:  MOVF   11,W
+02DA:  XORLW  80
+02DC:  MOVWF  00
+02DE:  MOVF   10,W
+02E0:  XORLW  80
+02E2:  SUBWF  00,W
+02E4:  BZ    02E8
+02E6:  BC    0374
+....................    {
+....................       P = 2*dy - dx;
+02E8:  MOVLW  02
+02EA:  MOVWF  16
+02EC:  MOVFF  11,17
+02F0:  RCALL  0130
+02F2:  MOVF   10,W
+02F4:  SUBWF  01,W
+02F6:  CLRF   03
+02F8:  BTFSC  FE8.7
+02FA:  DECF   03,F
+02FC:  MOVWF  12
+02FE:  MOVFF  03,13
+.................... 
+....................       for(i=0; i<=dx; ++i)
+0302:  CLRF   14
+0304:  BTFSC  10.7
+0306:  BRA    0372
+0308:  MOVF   14,W
+030A:  SUBWF  10,W
+030C:  BNC   0372
+....................       {
+....................          glcd_pixel(x, y, color);
+030E:  MOVFF  0C,15
+0312:  MOVFF  0D,16
+0316:  MOVFF  0B,17
+031A:  RCALL  01B8
+.................... 
+....................          if(P < 0)
+031C:  BTFSS  13.7
+031E:  BRA    033E
+....................          {
+....................             P += 2*dy;
+0320:  MOVLW  02
+0322:  MOVWF  16
+0324:  MOVFF  11,17
+0328:  RCALL  0130
+032A:  MOVF   01,W
+032C:  CLRF   03
+032E:  BTFSC  FE8.7
+0330:  DECF   03,F
+0332:  ADDWF  12,F
+0334:  MOVF   03,W
+0336:  ADDWFC 13,F
+....................             x += addx;
+0338:  MOVF   0E,W
+033A:  ADDWF  0C,F
+....................          }
+033C:  BRA    036E
+....................          else
+....................          {
+....................             P += 2*dy - 2*dx;
+033E:  MOVLW  02
+0340:  MOVWF  16
+0342:  MOVFF  11,17
+0346:  RCALL  0130
+0348:  MOVFF  01,15
+034C:  MOVLW  02
+034E:  MOVWF  16
+0350:  MOVFF  10,17
+0354:  RCALL  0130
+0356:  MOVF   01,W
+0358:  SUBWF  15,W
+035A:  CLRF   03
+035C:  BTFSC  FE8.7
+035E:  DECF   03,F
+0360:  ADDWF  12,F
+0362:  MOVF   03,W
+0364:  ADDWFC 13,F
+....................             x += addx;
+0366:  MOVF   0E,W
+0368:  ADDWF  0C,F
+....................             y += addy;
+036A:  MOVF   0F,W
+036C:  ADDWF  0D,F
+....................          }
+036E:  INCF   14,F
+0370:  BRA    0304
+....................       }
+....................    }
+0372:  BRA    03FE
+....................    else
+....................    {
+....................       P = 2*dx - dy;
+0374:  MOVLW  02
+0376:  MOVWF  16
+0378:  MOVFF  10,17
+037C:  RCALL  0130
+037E:  MOVF   11,W
+0380:  SUBWF  01,W
+0382:  CLRF   03
+0384:  BTFSC  FE8.7
+0386:  DECF   03,F
+0388:  MOVWF  12
+038A:  MOVFF  03,13
+.................... 
+....................       for(i=0; i<=dy; ++i)
+038E:  CLRF   14
+0390:  BTFSC  11.7
+0392:  BRA    03FE
+0394:  MOVF   14,W
+0396:  SUBWF  11,W
+0398:  BNC   03FE
+....................       {
+....................          glcd_pixel(x, y, color);
+039A:  MOVFF  0C,15
+039E:  MOVFF  0D,16
+03A2:  MOVFF  0B,17
+03A6:  RCALL  01B8
+.................... 
+....................          if(P < 0)
+03A8:  BTFSS  13.7
+03AA:  BRA    03CA
+....................          {
+....................             P += 2*dx;
+03AC:  MOVLW  02
+03AE:  MOVWF  16
+03B0:  MOVFF  10,17
+03B4:  RCALL  0130
+03B6:  MOVF   01,W
+03B8:  CLRF   03
+03BA:  BTFSC  FE8.7
+03BC:  DECF   03,F
+03BE:  ADDWF  12,F
+03C0:  MOVF   03,W
+03C2:  ADDWFC 13,F
+....................             y += addy;
+03C4:  MOVF   0F,W
+03C6:  ADDWF  0D,F
+....................          }
+03C8:  BRA    03FA
+....................          else
+....................          {
+....................             P += 2*dx - 2*dy;
+03CA:  MOVLW  02
+03CC:  MOVWF  16
+03CE:  MOVFF  10,17
+03D2:  RCALL  0130
+03D4:  MOVFF  01,15
+03D8:  MOVLW  02
+03DA:  MOVWF  16
+03DC:  MOVFF  11,17
+03E0:  RCALL  0130
+03E2:  MOVF   01,W
+03E4:  SUBWF  15,W
+03E6:  CLRF   03
+03E8:  BTFSC  FE8.7
+03EA:  DECF   03,F
+03EC:  ADDWF  12,F
+03EE:  MOVF   03,W
+03F0:  ADDWFC 13,F
+....................             x += addx;
+03F2:  MOVF   0E,W
+03F4:  ADDWF  0C,F
+....................             y += addy;
+03F6:  MOVF   0F,W
+03F8:  ADDWF  0D,F
+....................          }
+03FA:  INCF   14,F
+03FC:  BRA    0390
+....................       }
+....................    }
+03FE:  RETURN 0
+.................... }
+.................... 
+.................... void main(){
+*
+0426:  CLRF   FF8
+0428:  BCF    FD0.7
+042A:  MOVF   FC1,W
+042C:  ANDLW  C0
+042E:  IORLW  0F
+0430:  MOVWF  FC1
+0432:  MOVLW  07
+0434:  MOVWF  FB4
+.................... 
+....................    glcd_init(ON);
+0436:  MOVLW  01
+0438:  MOVWF  07
+043A:  BRA    00B4
+....................    glcd_fillScreen(0);
+043C:  CLRF   08
+043E:  RCALL  004A
+.................... 
+....................    while(TRUE){
+....................       for(int i = 0; i < 64; i++){
+0440:  CLRF   05
+0442:  MOVF   05,W
+0444:  SUBLW  3F
+0446:  BNC   0460
+....................          glcd_line(0,i,120,i,1);
+0448:  CLRF   07
+044A:  MOVFF  05,08
+044E:  MOVLW  78
+0450:  MOVWF  09
+0452:  MOVFF  05,0A
+0456:  MOVLW  01
+0458:  MOVWF  0B
+045A:  RCALL  028C
+045C:  INCF   05,F
+045E:  BRA    0442
+....................       }
+....................       delay_ms(600);
+0460:  MOVLW  03
+0462:  MOVWF  07
+0464:  MOVLW  C8
+0466:  MOVWF  08
+0468:  RCALL  0400
+046A:  DECFSZ 07,F
+046C:  BRA    0464
+....................       for(int i = 0; i < 64; i++){
+046E:  CLRF   06
+0470:  MOVF   06,W
+0472:  SUBLW  3F
+0474:  BNC   048C
+....................          glcd_line(0,i,120,i,0);
+0476:  CLRF   07
+0478:  MOVFF  06,08
+047C:  MOVLW  78
+047E:  MOVWF  09
+0480:  MOVFF  06,0A
+0484:  CLRF   0B
+0486:  RCALL  028C
+0488:  INCF   06,F
+048A:  BRA    0470
+....................       }
+....................       delay_ms(600);
+048C:  MOVLW  03
+048E:  MOVWF  07
+0490:  MOVLW  C8
+0492:  MOVWF  08
+0494:  RCALL  0400
+0496:  DECFSZ 07,F
+0498:  BRA    0490
+049A:  BRA    0440
+....................    }
+.................... 
+.................... }
+049C:  SLEEP 
+
+Configuration Fuses:
+   Word  1: CC04   PLL5 CPUDIV1 NOUSBDIV HS FCMEN IESO
+   Word  2: 1E3E   PUT BROWNOUT BORV21 VREGEN NOWDT WDT32768
+   Word  3: 0700   CCP2C1 PBADEN LPT1OSC NOMCLR
+   Word  4: 00A1   STVREN NOLVP ICSP2 NOXINST NODEBUG
+   Word  5: C00F   NOPROTECT NOCPB NOCPD
+   Word  6: E00F   NOWRT NOWRTC NOWRTB NOWRTD
+   Word  7: 400F   NOEBTR NOEBTRB

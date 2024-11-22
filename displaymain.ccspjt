@@ -1,0 +1,93 @@
+[PROJECT]
+Target=displaymain.hex
+Processor_Text=PIC18F4550
+CCSVersion=5.112
+Compiler=PCH
+[Target Data]
+FileList=displaymain.c
+[displaymain.c]
+Type=4
+[mru-list]
+1=displaymain.c
+
+[defines]
+buildcount=90
+
+[ProjectLog]
+Days=1
+D1=22-11-2024
+D1_L=39
+D1_L1=[6645]Started Editing.
+D1_L2=[6917]Stopped Editing.
+TotalEdit=188
+TotalDebug=0
+D1_E=188
+D1_D=0
+D1_L3=[6917]Project Closed.
+D1_L4=[10347]Project Opened.
+D1_L5=[10377]Started Editing.
+D1_L6=[11761]Stopped Editing.
+D1_L7=[11761]Project Closed.
+D1_L8=[11993]Project Opened.
+D1_L9=[12005]Started Editing.
+D1_L10=[13043]Stopped Editing.
+D1_L11=[13043]Project Closed.
+D1_L12=[13069]Project Opened.
+D1_L13=[13107]Started Editing.
+D1_L14=[15965]Stopped Editing.
+D1_L15=[17079]Started Editing.
+D1_L16=[17452]Stopped Editing.
+D1_L17=[17455]Started Editing.
+D1_L18=[17748]Stopped Editing.
+D1_L19=[17756]Started Editing.
+D1_L20=[17916]Project Closed.
+D1_L21=[20221]Project Opened.
+D1_L22=[20268]Started Editing.
+D1_L23=[20761]Stopped Editing.
+D1_L24=[21155]Started Editing.
+D1_L25=[23208]Stopped Editing.
+D1_L26=[23232]Started Editing.
+D1_L27=[23842]Stopped Editing.
+D1_L28=[23899]Started Editing.
+D1_L29=[26780]Stopped Editing.
+D1_L30=[26787]Started Editing.
+D1_L31=[29308]Stopped Editing.
+D1_L32=[29453]Started Editing.
+D1_L33=[29837]Stopped Editing.
+D1_L34=[36837]Started Editing.
+D1_L35=[37754]Stopped Editing.
+D1_L36=[38001]Started Editing.
+D1_L37=[38313]Stopped Editing.
+D1_L38=[38334]Started Editing.
+D1_L39=[40117]Stopped Editing.
+
+[Opened Files]
+1=controlmain.c
+t1=69
+2=..\halls\videogame.c
+t2=189
+3=..\..\..\..\..\..\..\Program Files (x86)\PICC\Devices\18F4550.h
+t3=549
+4=..\..\S3_Programación Avanzada\rs232 clase\codigoRS232PruebaEnClase.c
+t4=13
+5=displaymain.c
+t5=13
+Count=11
+6=..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\HDM64GS12.c
+t6=13
+7=..\halls\levels.h
+t7=12
+8=..\halls\setup.h
+t8=112
+9=setup_disp.h
+t9=115
+10=tetsts.c
+t10=1
+11=..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\glcd.c
+t11=1
+
+[fileformats]
+forcecoff=0
+[Units]
+Count=1
+1=displaymain (main)

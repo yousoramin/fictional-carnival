@@ -1,0 +1,67 @@
+[PROJECT]
+Target=controlmain.hex
+Processor_Text=PIC18F4550
+CCSVersion=5.112
+Compiler=PCH
+[Target Data]
+FileList=controlmain.c
+[controlmain.c]
+Type=4
+[mru-list]
+1=controlmain.c
+
+[defines]
+buildcount=14
+
+[ProjectLog]
+Days=1
+D1=22-11-2024
+D1_L=17
+D1_L1=[6531]Project Closed.
+D1_L2=[6917]Project Opened.
+D1_L3=[6923]Started Editing.
+D1_L4=[8375]Stopped Editing.
+TotalEdit=56
+TotalDebug=0
+D1_E=56
+D1_D=0
+D1_L5=[8408]Started Editing.
+D1_L6=[10210]Stopped Editing.
+D1_L7=[10343]Started Editing.
+D1_L8=[10347]Stopped Editing.
+D1_L9=[10347]Project Closed.
+D1_L10=[11761]Project Opened.
+D1_L11=[11806]Started Editing.
+D1_L12=[11993]Stopped Editing.
+D1_L13=[11993]Project Closed.
+D1_L14=[13043]Project Opened.
+D1_L15=[13047]Started Editing.
+D1_L16=[13069]Stopped Editing.
+D1_L17=[13069]Project Closed.
+
+[fileformats]
+forcecoff=0
+
+[Opened Files]
+1=controlmain.c
+t1=77
+2=..\halls\videogame.c
+t2=467
+3=..\..\..\..\..\..\..\Program Files (x86)\PICC\Devices\18F4550.h
+t3=549
+4=..\..\S3_Programación Avanzada\rs232 clase\codigoRS232PruebaEnClase.c
+t4=13
+5=displaymain.c
+t5=83
+Count=9
+6=..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\HDM64GS12.c
+t6=13
+7=..\halls\levels.h
+t7=1
+8=..\halls\setup.h
+t8=1
+9=setup_disp.h
+t9=80
+[Units]
+Count=1
+1=controlmain (main)
