@@ -35,8 +35,6 @@ int1 shoot_1 = 1;
 int cooldown_1 = 20;
 int aiming_1 = 0;
 
-void rect(int x1, int y1, int x2, int y2);
-
 int1 shoot_2 = 1;
 int cooldown_2 = 20;
 int aiming_2 = 0;
@@ -49,9 +47,6 @@ int x_pos = 64;
 int y_pos = 32;
 float dx = 0;
 float dy = 0;
-
-void explic_s();
-void explic_m();
 // bala
 int1 bullet = 0;
 signed int last_last_bullet_x_pos;
@@ -114,7 +109,7 @@ void scores(unsigned int16 scr, unsigned int lvl, int1 color);
 void single_menu(int1 play);
 int laser_waza(int x, int y);
 
-float get_ship_angle(int x, int y);
+float get_ship_angle();
 float get_x_vel();
 float get_y_vel();
 
@@ -218,7 +213,6 @@ void restart_screen()
    char text_asteroids[] = "Presiona para restart";
    glcd_text57(0, 0, text_asteroids, 1, 1);
 }
-void grafico_control();
 
 void main()
 {
@@ -237,7 +231,7 @@ void main()
    int single_men = 0;
    int last_single_men = 0;
 
-   
+   inicio(1);
 
    int1 win = 0;
    int1 who = 0;
@@ -250,11 +244,6 @@ void main()
 
    int temp = 0;
    int1 new_game = 0;
-
-   grafico_control();
-   delay_ms(5000);
-
-   inicio(1);
 
    while (TRUE)
    {
@@ -335,9 +324,6 @@ void main()
             case 1:
                mode = 'j';
                glcd_fillScreen(0);
-               explic_s();
-               delay_ms(3000);
-               glcd_fillScreen(0);
                break;
             }
          }
@@ -374,9 +360,6 @@ void main()
                mode = 'J';
                new_game = 1;
                glcd_fillScreen(0);
-               explic_m();
-               delay_ms(3000);
-               glcd_fillScreen(0);
                break;
             }
          }
@@ -410,7 +393,7 @@ void main()
          }
          else
          {
-            ship_angle = (get_ship_angle(p1_pot_xx,p1_pot_yy) * 3.1416f) / 180.0f; // potenciometros angulos
+            ship_angle = (get_ship_angle() * 3.1416f) / 180.0f; // potenciometros angulos
 
             dx = get_x_vel();          // potenciometro movimiento
             dy = get_y_vel();          // potenciometro movimiento
@@ -449,10 +432,6 @@ void main()
                   { // perder
                      mode = 'i';
                      new_level = 1;
-                     glcd_fillScreen(1);
-                     char text_asteroids[] = "YOU LOSE!";
-                     glcd_text57(29, 22, text_asteroids, 1, 0);
-                     delay_ms(1000);
                      glcd_fillScreen(0);
                      inicio(0);
                      if (score > best_score)
@@ -603,27 +582,27 @@ void main()
 
          dx_1 = get_d(p1_pot_x);        // potenciometro movimiento
          dy_1 = get_d(p1_pot_y);        // potenciometro movimiento
-         if ((float)x_pos_1 + dx_1 < 4) // mover jugador
-            x_pos_1 = 123 + (int)((float)x_pos_1 + dx_1);
+         if ((float)x_pos_1 + dx_1 < 0) // mover jugador
+            x_pos_1 = 127 + (int)((float)x_pos_1 + dx_1);
          else
-            x_pos_1 = (x_pos_1 + (int)dx_1) % 123;
+            x_pos_1 = (x_pos_1 + (int)dx_1) % 127;
 
-         if ((float)y_pos_1 - dy_1 < 4) // mover jugador
-            y_pos_1 = 59 + (int)((float)y_pos_1 - dy_1);
+         if ((float)y_pos_1 - dy_1 < 0) // mover jugador
+            y_pos_1 = 63 + (int)((float)y_pos_1 - dy_1);
          else
-            y_pos_1 = (y_pos_1 - (int)dy_1) % 59;
+            y_pos_1 = (y_pos_1 - (int)dy_1) % 63;
 
          dx_2 = get_d(p2_pot_x);        // potenciometro movimiento
          dy_2 = get_d(p2_pot_y);        // potenciometro movimiento
-         if ((float)x_pos_2 + dx_2 < 4) // mover jugador
-            x_pos_2 = 123 + (int)((float)x_pos_2 + dx_2);
+         if ((float)x_pos_2 + dx_2 < 0) // mover jugador
+            x_pos_2 = 127 + (int)((float)x_pos_2 + dx_2);
          else
-            x_pos_2 = (x_pos_2 + (int)dx_2) % 123;
+            x_pos_2 = (x_pos_2 + (int)dx_2) % 127;
 
-         if ((float)y_pos_2 - dy_2 < 4) // mover jugador
-            y_pos_2 = 59 + (int)((float)y_pos_2 - dy_2);
+         if ((float)y_pos_2 - dy_2 < 0) // mover jugador
+            y_pos_2 = 63 + (int)((float)y_pos_2 - dy_2);
          else
-            y_pos_2 = (y_pos_2 - (int)dy_2) % 59;
+            y_pos_2 = (y_pos_2 - (int)dy_2) % 63;
 
          if(shoot_1){
             cooldown_1 = 0;
@@ -1043,9 +1022,9 @@ void inicio(int sec)
       glcd_text57(38, 4, text_asteroids, 1, 1);
       
       char text_aid[] = "SELECT & HOLD: [LJ]";
-      glcd_text57(10, 49, text_aid, 1, 1);
-      char text_aid2[] = "PRESS: [BR]";
-      glcd_text57(40, 57, text_aid2, 1, 1);
+      glcd_text57(20, 49, text_aid, 1, 1);
+      char text_aid[] = "PRESS: [BR]";
+      glcd_text57(20, 57, text_aid, 1, 1);
 
 
       for (int i = 0; i < 16; i++)
@@ -1075,9 +1054,9 @@ void inicio(int sec)
       char text_asteroids[] = "ASTEROIDS";
       glcd_text57(38, 4, text_asteroids, 1, 1);
       char text_aid[] = "SELECT & HOLD: [LJ]";
-      glcd_text57(10, 49, text_aid, 1, 1);
-      char text_aid2[] = "PRESS: [BR]";
-      glcd_text57(40, 57, text_aid2, 1, 1);
+      glcd_text57(20, 49, text_aid, 1, 1);
+      char text_aid[] = "PRESS: [BR]";
+      glcd_text57(20, 57, text_aid, 1, 1);
 
       for (int i = 0; i < 16; i++)
       {
@@ -1110,9 +1089,9 @@ void inicio(int sec)
       char text_asteroids[] = "ASTEROIDS";
       glcd_text57(38, 4, text_asteroids, 1, 0);
       char text_aid[] = "SELECT & HOLD: [LJ]";
-      glcd_text57(10, 49, text_aid, 1, 1);
-      char text_aid2[] = "PRESS: [BR]";
-      glcd_text57(40, 57, text_aid2, 1, 1);
+      glcd_text57(20, 49, text_aid, 1, 1);
+      char text_aid[] = "PRESS: [BR]";
+      glcd_text57(20, 57, text_aid, 1, 1);
 
       for (int i = 0; i < 16; i++)
       {
@@ -1156,11 +1135,6 @@ void single_menu(int1 play)
          glcd_line(20, i, 90, i, 0);
       }
       glcd_text57(24, 44, text_ret, 1, 1);
-
-      char text_aid[] = "SELECT & HOLD: [LJ]";
-      glcd_text57(10, 5, text_aid, 1, 1);
-      char text_aid2[] = "PRESS: [BL]";
-      glcd_text57(10, 13, text_aid2, 1, 1);
    }
    else
    {
@@ -1175,11 +1149,6 @@ void single_menu(int1 play)
          glcd_line(20, i, 90, i, 1);
       }
       glcd_text57(24, 44, text_ret, 1, 0);
-
-      char text_aid[] = "SELECT & HOLD: [LJ]";
-      glcd_text57(10, 5, text_aid, 1, 1);
-      char text_aid2[] = "PRESS: [BL]";
-      glcd_text57(10, 13, text_aid2, 1, 1);
    }
 }
 
@@ -1193,29 +1162,53 @@ void scores(unsigned int16 scr, unsigned int lvl, int1 color)
    glcd_text57(103, 0, text_level, 1, color);
 }
 
-float get_ship_angle(int x, int y)
+float get_ship_angle()
 {
-   if(x > 185){ // derecha
-   return 270.0f;
-   return 90.0f;
-      return 0.0f;
+   if (p1_pot_xx < 80)
+   {
+      if (p1_pot_yy < 80)
+      {
+         return 225;
+      }
+      else if (p1_pot_yy > 170)
+      {
+         return 135;
+      }
+      else
+      {
+         return 180;
+      }
    }
-   else if(x < 70){// izquierda
-   return 90.0f;
-   return 270.0f;
-      return 180.0f;
+   else if (p1_pot_xx > 170)
+   {
+      if (p1_pot_yy < 80)
+      {
+         return 315;
+      }
+      else if (p1_pot_yy > 170)
+      {
+         return 45;
+      }
+      else
+      {
+         return 0;
+      }
    }
-   if(y > 185){ // arriba
-   return 0.0f;
-      return 180.0f;
-      return 90.0f;
+   else
+   {
+      if (p1_pot_yy < 80)
+      {
+         return 270;
+      }
+      else if (p1_pot_yy > 170)
+      {
+         return 180;
+      }
+      else
+      {
+         return 0;
+      }
    }
-   else if(y < 70){ // abajo
-   return 180.0f;
-      return 0.0f;
-      return 270.0f;
-   }
-   return 0.0f;
 }
 float get_x_vel()
 {
@@ -1228,16 +1221,16 @@ float get_y_vel()
 
 
 int laser_waza(int x, int y){
-   if(x > 185){ // derecha
+   if(x > 205){ // derecha
       return 2;
    }
-   else if(x < 70){// izquierda
+   else if(x < 50){// izquierda
       return 4;
    }
-   if(y > 185){ // arriba
+   if(y > 205){ // arriba
       return 1;
    }
-   else if(y < 70){ // abajo
+   else if(y < 50){ // abajo
       return 3;
    }
    return 0;
@@ -1249,70 +1242,9 @@ void draw_cuadrito(int x, int y, int1 col)
    glcd_line(x - 2, y - 2, x + 2, y - 2, col);
    glcd_line(x - 2, y + 2, x - 2, y - 2, col);
    glcd_line(x + 2, y + 2, x + 2, y - 2, col);
-   
-/*   glcd_line(x - 4, y + 4, x + 4, y + 4, col);
+
+   glcd_line(x - 4, y + 4, x + 4, y + 4, col);
    glcd_line(x - 4, y - 4, x + 4, y - 4, col);
    glcd_line(x - 4, y + 4, x - 4, y - 4, col);
-   glcd_line(x + 4, y + 4, x + 4, y - 4, col);*/
-}
-
-void rect(int x1, int y1, int x2, int y2){
-   glcd_line(x1, y1, x2, y1, 1);
-   glcd_line(x1, y1, x1, y2, 1);
-   glcd_line(x2, y1, x2, y2, 1);
-   glcd_line(x1, y2, x2, y2, 1);
-}
-
-void grafico_control(){// rectangulo control
-   rect(20,20,108,44);
-   rect(20,10,40,20);
-   rect(88,10,108,20);
-   rect(22,24,54,34);
-   rect(74,24,106,34);
-   char bl[] = "BL";
-   glcd_text57(22,12, bl, 1, 1);
-   char br[] = "BR";
-   glcd_text57(90,12, br, 1, 1);
-   char jl[] = "LJ";
-   glcd_text57(24,26, jl, 1, 1);
-   char jr[] = "RJ";
-   glcd_text57(76,26, jr, 1, 1);
-   char p[] = "Use P1 in menus";
-   glcd_text57(20,56, p, 1, 1);
-}
-
-void explic_m(){// rectangulo control
-   rect(20,20,108,44);
-   rect(20,10,60,20);
-   rect(88,10,108,20);
-   rect(22,24,54,34);
-   rect(74,24,106,34);
-   char bl[] = "SHOOT";
-   glcd_text57(22,12, bl, 1, 1);
-   char br[] = "-";
-   glcd_text57(90,12, br, 1, 1);
-   char jl[] = "MOVE";
-   glcd_text57(24,26, jl, 1, 1);
-   char jr[] = "AIM";
-   glcd_text57(76,26, jr, 1, 1);
-   char p[] = "For P1 & P2";
-   glcd_text57(20,56, p, 1, 1);
-}
-
-void explic_s(){// rectangulo control
-   rect(20,20,108,44);
-   rect(20,10,40,20);
-   rect(68,10,108,20);
-   rect(22,24,54,34);
-   rect(74,24,106,34);
-   char bl[] = "-";
-   glcd_text57(22,12, bl, 1, 1);
-   char br[] = "SHOOT";
-   glcd_text57(70,12, br, 1, 1);
-   char jl[] = "MOVE";
-   glcd_text57(24,26, jl, 1, 1);
-   char jr[] = "AIM";
-   glcd_text57(76,26, jr, 1, 1);
-   char p[] = "For P1 only";
-   glcd_text57(20,56, p, 1, 1);
+   glcd_line(x + 4, y + 4, x + 4, y - 4, col);
 }

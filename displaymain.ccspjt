@@ -11,12 +11,12 @@ Type=4
 1=displaymain.c
 
 [defines]
-buildcount=105
+buildcount=134
 
 [ProjectLog]
 Days=1
 D1=22-11-2024
-D1_L=44
+D1_L=51
 D1_L1=[6645]Started Editing.
 D1_L2=[6917]Stopped Editing.
 TotalEdit=188
@@ -65,6 +65,13 @@ D1_L41=[42187]Stopped Editing.
 D1_L42=[43956]Started Editing.
 D1_L43=[44256]Stopped Editing.
 D1_L44=[44711]Started Editing.
+D1_L45=[45018]Stopped Editing.
+D1_L46=[45400]Started Editing.
+D1_L47=[45701]Stopped Editing.
+D1_L48=[46235]Started Editing.
+D1_L49=[46779]Stopped Editing.
+D1_L50=[47008]Started Editing.
+D1_L51=[47308]Stopped Editing.
 
 [Opened Files]
 1=controlmain.c
@@ -76,12 +83,12 @@ t3=549
 4=..\..\S3_Programación Avanzada\rs232 clase\codigoRS232PruebaEnClase.c
 t4=13
 5=displaymain.c
-t5=13
+t5=1
 Count=11
 6=..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\HDM64GS12.c
 t6=13
 7=..\halls\levels.h
-t7=12
+t7=13
 8=..\halls\setup.h
 t8=112
 9=setup_disp.h
